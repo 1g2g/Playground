@@ -7,10 +7,11 @@ import {
 import Home from "../routes/Home";
 import Game from "../routes/Game";
 import Header from "../components/Header";
-const AppRouter = () => {
+import { nicknameProps } from "./App";
+const AppRouter: React.FC<nicknameProps> = ({ nickname }) => {
   return (
     <Router>
-      <Header />
+      <Header nickname={nickname} />
       <Switch>
         <>
           <Route exact path="/">
