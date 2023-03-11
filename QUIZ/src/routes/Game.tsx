@@ -1,6 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { quizApi } from "../api/quizApi";
+import { Quiz } from "../type/QuizApi";
+import PossibleAnswer from "../components/PossibleAnswer";
 
 const Game = () => {
-  return <div>This is Game Page</div>;
+  const [quizes, setQuizes] = useState<Quiz[]>([]);
+  const [solvingNum, setSolvingNum] = useState(0);
+  const [quiz, setQuiz] = useState<Quiz>();
+  const [score, setScore] = useState(0);
+  const [time, setTime] = useState(10);
+  const [timerId, setTimerId] = useState<NodeJS.Timeout>();
+
+  useEffect(() => {
+    const callApi = async () => {
+      const response = await quizApi();
+      if (response.result === "success") {
+        setQuizes(response.quiz);
+        setQuiz(response.quiz[0]);
+      } else {
+        return;
+      }
+    };
+    callApi();
+  }, []);
+  useEffect(() => {
+    if (solvingNum < quizes.length - 1) {
+      setQuiz(quizes[solvingNum + 1]);
+    }
+  }, [solvingNum, quizes]);
+  useEffect(() => {
+    if (quiz) countDown();
+  }, [quiz]);
+
+  const setNextQuiz = () => {
+    if (solvingNum < quizes.length - 1) {
+      setSolvingNum((prev) => prev + 1);
+      setTime(10);
+    }
+  };
+  const handleAnswer = (selected: string | null) => {
+    if (selected === quiz?.correctAnswer) {
+      alert("정답입니다.");
+      setNextQuiz();
+      setScore((prev) => prev + 1);
+    }
+  };
+  const countDown = () => {
+    clearInterval(timerId);
+    setTimerId(undefined);
+    const timer = setInterval(() => {
+      setTime((prev) => {
+        if (prev === 0) {
+          clearInterval(timer);
+          setNextQuiz();
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    setTimerId(timer);
+  };
+  return (
+    <section>
+      <div>점수{score}</div>
+      <div>숫자 카운트다운{time}</div>
+      <div>문제{quiz?.question}</div>
+      <PossibleAnswer quiz={quiz} handleAnswer={handleAnswer} />
+      <div>
+        <button onClick={setNextQuiz} disabled={!quiz}>
+          다음으로 넘어가기{solvingNum}
+        </button>
+      </div>
+      <Link to="/">홈으로 돌아가기</Link>
+    </section>
+  );
 };
+
 export default Game;

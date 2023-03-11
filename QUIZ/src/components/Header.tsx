@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { nicknameProps } from "./App";
+
 const Header: React.FC<nicknameProps> = ({ nickname }) => {
   console.log(nickname);
   return (
     <>
-      {Boolean(nickname) ? (
+      {nickname ? (
         <header>Welcome! {nickname}</header>
       ) : (
-        "Enter you nickname!"
+        <header>Enter your nickname!</header>
       )}
     </>
   );
 };
+
 export default Header;

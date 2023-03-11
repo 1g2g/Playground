@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { setNicknameLocalStorage } from "../utils/handeLocalStorage";
 const Home = () => {
   const [nickname, setNickname] = useState("");
@@ -16,6 +17,7 @@ const Home = () => {
       <form onSubmit={handleNickname}>
         <input type="text" name="nickname" />
       </form>
+      <Link to="/game">게임시작!</Link>
     </div>
   );
 };
