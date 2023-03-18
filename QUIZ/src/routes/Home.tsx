@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { setNicknameLocalStorage } from "../utils/handeLocalStorage";
+import { ButtonExpansion } from "../components/ButtonExpansion";
 const Home = () => {
   const [nickname, setNickname] = useState("");
+  const [toggleInput, setToggleInput] = useState(false);
   //닉네임 설정
   const handleNickname = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.currentTarget);
@@ -11,13 +12,35 @@ const Home = () => {
     setNickname(value);
     setNicknameLocalStorage(value);
   };
+  const showInput = () => {
+    setToggleInput((prev) => !prev);
+  };
   //게임스타트 버튼
   return (
-    <div>
-      <form onSubmit={handleNickname}>
-        <input type="text" name="nickname" />
-      </form>
-      <Link to="/game">게임시작!</Link>
+    <div className="homeArea">
+      {toggleInput ? (
+        <form onSubmit={handleNickname}>
+          <input
+            type="text"
+            name="nickname"
+            placeholder={
+              nickname === ""
+                ? "닉네임을 입력해주세요"
+                : "변경할 닉네임을 입력해주세요"
+            }
+          />
+        </form>
+      ) : (
+        <button onClick={showInput} className="showInput">
+          닉네임 설정
+        </button>
+      )}
+
+      <ButtonExpansion
+        pageToGo="game"
+        originClass="gameStart"
+        extraClass="btnExpansion"
+      />
     </div>
   );
 };

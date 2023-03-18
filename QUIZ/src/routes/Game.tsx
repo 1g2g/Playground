@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { quizApi } from "../api/quizApi";
 import { Quiz } from "../type/QuizApi";
 import PossibleAnswer from "../components/PossibleAnswer";
-
+import { ButtonExpansion } from "../components/ButtonExpansion";
 const Game = () => {
   const [quizes, setQuizes] = useState<Quiz[]>([]);
   const [solvingNum, setSolvingNum] = useState(0);
@@ -11,7 +11,7 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(10);
   const [timerId, setTimerId] = useState<NodeJS.Timeout>();
-
+  const navigate = useNavigate();
   useEffect(() => {
     const callApi = async () => {
       const response = await quizApi();
@@ -30,6 +30,10 @@ const Game = () => {
     }
   }, [solvingNum, quizes]);
   useEffect(() => {
+    if (quiz?.id === 2038 || quiz?.id === 3034 || quiz?.id === 2253) {
+      navigate("/");
+      alert("종료되었습니다");
+    }
     if (quiz) countDown();
   }, [quiz]);
 
@@ -61,18 +65,27 @@ const Game = () => {
     setTimerId(timer);
   };
   return (
-    <section>
-      <div>점수{score}</div>
-      <div>숫자 카운트다운{time}</div>
-      <div>문제{quiz?.question}</div>
-      <PossibleAnswer quiz={quiz} handleAnswer={handleAnswer} />
-      <div>
-        <button onClick={setNextQuiz} disabled={!quiz}>
-          다음으로 넘어가기{solvingNum}
-        </button>
-      </div>
-      <Link to="/">홈으로 돌아가기</Link>
-    </section>
+    <>
+      <section className="quizArea">
+        <div>
+          Your Score is {score}/{solvingNum}
+        </div>
+        <div className="question">{quiz?.question}</div>
+        <span> {time}s left</span>
+
+        <PossibleAnswer quiz={quiz} handleAnswer={handleAnswer} />
+        <div className="toNextQuestion">
+          <button onClick={setNextQuiz} disabled={!quiz}>
+            다음으로 넘어가기
+          </button>
+        </div>
+        <ButtonExpansion
+          pageToGo=""
+          originClass="backToHome"
+          extraClass="btnExpansion"
+        />
+      </section>
+    </>
   );
 };
 
