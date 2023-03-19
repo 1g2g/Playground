@@ -32,7 +32,7 @@ const Game = () => {
   useEffect(() => {
     if (quiz?.id === 2038 || quiz?.id === 3034 || quiz?.id === 2253) {
       navigate("/");
-      alert("종료되었습니다");
+      alert(`축하합니다 ${score}점입니다`);
     }
     if (quiz) countDown();
   }, [quiz]);
@@ -74,10 +74,8 @@ const Game = () => {
         <span> {time}s left</span>
 
         <PossibleAnswer quiz={quiz} handleAnswer={handleAnswer} />
-        <div className="toNextQuestion">
-          <button onClick={setNextQuiz} disabled={!quiz}>
-            다음으로 넘어가기
-          </button>
+        <div className="toNextQuestion" onClick={setNextQuiz}>
+          다음으로 넘어가기
         </div>
         <ButtonExpansion
           pageToGo=""

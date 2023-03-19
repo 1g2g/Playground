@@ -23,7 +23,7 @@ export const ButtonExpansion: React.FC<buttonProps> = ({
       className={isClicked ? `${originClass} ${extraClass}` : originClass}
       onClick={moveToGame}
     >
-      {originClass}
+      {originClass.toUpperCase()}
     </button>
   );
 };
