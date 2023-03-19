@@ -1,0 +1,10 @@
+{
+  "name": "playground",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "initialize": "cd quiz && npm i",
+    "quiz": "cd quiz && npm start"
+  }
+}
