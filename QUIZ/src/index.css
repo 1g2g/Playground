@@ -1,13 +1,104 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  text-decoration: none;
+}
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+header {
+  font-size: 36px;
+  padding: 25px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*          home           */
+.homeArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.homeArea > form {
+  width: 100%;
+}
+input[name="nickname"] {
+  width: 20%;
+  height: 25px;
+  padding: 20px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border: 0px;
+  border-bottom: 1px solid;
+}
+
+/*button*/
+.showInput,
+.gameStart,
+.backToHome {
+  display: inline-block;
+  width: 30%;
+  height: 80px;
+  line-height: 80px;
+  background-color: white;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px;
+}
+.btnExpansion {
+  animation: btn-expansion 2.2s forwards;
+}
+@keyframes btn-expansion {
+  0% {
+    color: white;
+  }
+  100% {
+    width: 100vw;
+    height: 180vh;
+  }
+}
+
+/*         game page         */
+.quizArea {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.quizArea > .question {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px;
+}
+.quizArea ul {
+  padding-left: 0;
+  list-style-type: none;
+  width: 100%;
+}
+.quizArea ul li {
+  border: 1px solid black;
+  width: 40%;
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+}
+.quizArea ul li:hover {
+  transform: scale(1.2);
+}
+.quizArea .toNextQuestion {
+  border: 1px solid black;
+  width: 40%;
+  margin: 0px auto 30px auto;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+.quizArea .toNextQuestion button {
+  border: none;
+  background-color: white;
 }
