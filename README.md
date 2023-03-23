@@ -1,11 +1,15 @@
 # Playground
 
 ### 의존성 설치
-
+전체 설치
 ```
 $ npm run initialize
 ```
-
+개별 설치
+```
+$ cd (원하는 폴더명)
+$ npm i
+```
 ## QUIZ
 
 [![image](https://user-images.githubusercontent.com/87280835/226159817-35292084-6b36-4659-a174-594c80791c6d.png)](https://dashing-treacle-6f3a12.netlify.app/)
