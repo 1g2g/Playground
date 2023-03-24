@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import { setNicknameLocalStorage } from "../utils/handeLocalStorage";
 import { ButtonExpansion } from "../components/ButtonExpansion";
+import Store from "../utils/store";
 const Home = () => {
-  const [nickname, setNickname] = useState("");
-  const [toggleInput, setToggleInput] = useState(false);
+  const state = useContext(Store);
+  const [toggleInput, setToggleInput] = useState(
+    state.nickname === "" ? true : false
+  );
   //닉네임 설정
   const handleNickname = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.currentTarget);
 
     const value = formData.get("nickname") as string;
-    setNickname(value);
     setNicknameLocalStorage(value);
   };
   const showInput = () => {
@@ -24,7 +26,7 @@ const Home = () => {
             type="text"
             name="nickname"
             placeholder={
-              nickname === ""
+              state.nickname === ""
                 ? "닉네임을 입력해주세요"
                 : "변경할 닉네임을 입력해주세요"
             }
@@ -35,12 +37,21 @@ const Home = () => {
           닉네임 설정
         </button>
       )}
-
-      <ButtonExpansion
-        pageToGo="game"
-        originClass="gameStart"
-        extraClass="btnExpansion"
-      />
+      <Store.Consumer>
+        {(Store) =>
+          Store.nickname ? (
+            <ButtonExpansion
+              pageToGo="game"
+              originClass="gameStart"
+              extraClass="btnExpansion"
+            />
+          ) : (
+            <button className="gameStart" disabled>
+              GAMESTART
+            </button>
+          )
+        }
+      </Store.Consumer>
     </div>
   );
 };

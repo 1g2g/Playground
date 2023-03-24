@@ -1,8 +1,8 @@
 import React from "react";
-import { Quiz } from "../type/QuizApi";
+import { quizType } from "../type/interface";
 
 type Props = {
-  quiz: Quiz | undefined;
+  quiz: quizType | undefined;
   handleAnswer: (selected: string | null) => void;
 };
 

@@ -1,16 +1,15 @@
-import React from "react";
-import { nicknameProps } from "./App";
-
-const Header: React.FC<nicknameProps> = ({ nickname }) => {
-  console.log(nickname);
+import Store from "../utils/store";
+const Header = () => {
   return (
-    <>
-      {nickname ? (
-        <header>Welcome! {nickname}</header>
-      ) : (
-        <header>Enter your nickname!</header>
-      )}
-    </>
+    <Store.Consumer>
+      {(store) =>
+        store.nickname ? (
+          <header>Welcome {store.nickname}</header>
+        ) : (
+          <header>Enter your nickname!</header>
+        )
+      }
+    </Store.Consumer>
   );
 };
 

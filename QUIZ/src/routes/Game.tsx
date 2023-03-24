@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { quizApi } from "../api/quizApi";
-import { Quiz } from "../type/QuizApi";
+import { quizType } from "../type/interface";
 import PossibleAnswer from "../components/PossibleAnswer";
 import { ButtonExpansion } from "../components/ButtonExpansion";
+
 const Game = () => {
-  const [quizes, setQuizes] = useState<Quiz[]>([]);
+  const [quizes, setQuizes] = useState<quizType[]>([]);
   const [solvingNum, setSolvingNum] = useState(0);
-  const [quiz, setQuiz] = useState<Quiz>();
+  const [quiz, setQuiz] = useState<quizType>();
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(10);
   const [timerId, setTimerId] = useState<NodeJS.Timeout>();

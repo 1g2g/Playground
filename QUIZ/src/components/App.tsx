@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getNicknameLocalStorage } from "../utils/handeLocalStorage";
 import Router from "./Router";
-export interface nicknameProps {
-  nickname: string;
-}
+import Store from "../utils/store";
+
 const App = () => {
   const [init, setInit] = useState(false);
   const [nickname, setNickname] = useState("");
@@ -12,6 +11,10 @@ const App = () => {
     if (nickname !== null) setNickname(nickname);
     setInit(true);
   }, []);
-  return <>{init ? <Router nickname={nickname} /> : "loading..."}</>;
+  return (
+    <Store.Provider value={{ nickname: nickname }}>
+      {init ? <Router /> : "loading..."}
+    </Store.Provider>
+  );
 };
 export default App;
