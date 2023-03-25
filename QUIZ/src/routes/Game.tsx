@@ -1,28 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { quizApi } from "../api/quizApi";
-import { Quiz } from "../type/QuizApi";
+import { quizType } from "../type/interface";
 import PossibleAnswer from "../components/PossibleAnswer";
 import { ButtonExpansion } from "../components/ButtonExpansion";
+import {
+  getQuizLocalStorage,
+  setQuizLocalStorage,
+} from "../utils/handeLocalStorage";
+
 const Game = () => {
-  const [quizes, setQuizes] = useState<Quiz[]>([]);
+  const [quizes, setQuizes] = useState<quizType[]>([]);
   const [solvingNum, setSolvingNum] = useState(0);
-  const [quiz, setQuiz] = useState<Quiz>();
+  const [quiz, setQuiz] = useState<quizType>();
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(10);
   const [timerId, setTimerId] = useState<NodeJS.Timeout>();
   const navigate = useNavigate();
   useEffect(() => {
+    const localQuiz = getQuizLocalStorage();
     const callApi = async () => {
       const response = await quizApi();
       if (response.result === "success") {
+        setQuizLocalStorage(JSON.stringify(response.quiz));
         setQuizes(response.quiz);
         setQuiz(response.quiz[0]);
       } else {
         return;
       }
     };
-    callApi();
+    const parseLocalQuiz = async () => {
+      if (localQuiz) {
+        const result = JSON.parse(localQuiz);
+        setQuizes(result);
+        setQuiz(result[0]);
+      }
+    };
+    localQuiz ? parseLocalQuiz() : callApi();
   }, []);
   useEffect(() => {
     if (solvingNum < quizes.length - 1) {
