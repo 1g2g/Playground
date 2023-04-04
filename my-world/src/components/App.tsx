@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { RouterProvider } from "react-router-dom";
 
+import { routers } from "./Router";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>This is My World</p>
-      </header>
-    </div>
-  );
+  const [init, setInit] = useState(true);
+  return <>{init ? <RouterProvider router={routers} /> : "loading"}</>;
 }
 
 export default App;
