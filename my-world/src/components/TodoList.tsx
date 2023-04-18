@@ -1,8 +1,10 @@
-import { Todo } from "modules/TodoReducer";
+import { Todos } from "modules/TodoReducer";
+
 type TodoListProps = {
-  todoLists: Todo[];
+  todoLists: Todos;
   del: (id: number) => void;
 };
+
 export const TodoList = ({ todoLists, del }: TodoListProps) => {
   const deleteTodo = (e: React.MouseEvent) => {
     const target = e.target as HTMLButtonElement;

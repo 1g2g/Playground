@@ -3,7 +3,7 @@ export type Todo = {
   text: string;
 };
 
-export type TodoList = Todo[];
+export type Todos = Todo[];
 
 let nextId = 1;
 const ADD_TODO = "add todo into todo list" as const;
@@ -23,12 +23,12 @@ export const delTodo = (id: number) => ({
 
 type TodoAction = ReturnType<typeof addTodo> | ReturnType<typeof delTodo>;
 
-const initialState: TodoList = [];
+const initialState: Todos = [];
 
 export function TodoReducer(
-  state: TodoList = initialState,
+  state: Todos = initialState,
   action: TodoAction
-): TodoList {
+): Todos {
   switch (action.type) {
     case ADD_TODO:
       return state.concat({
