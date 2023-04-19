@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import { Router as RemixRouter } from "@remix-run/router/dist/router";
 import { Home } from "routes/Home";
 import { SubPage } from "routes/SubPage";
-import { TodoPage } from "routes/TodoPage";
 interface RouterBase {
   id: number;
   path: string;
@@ -22,12 +21,6 @@ const routerData: RouterBase[] = [
     path: "sub",
     label: "SubPage",
     element: <SubPage />,
-  },
-  {
-    id: 2,
-    path: "todo",
-    label: "Todo",
-    element: <TodoPage />,
   },
 ];
 
