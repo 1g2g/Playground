@@ -9,9 +9,16 @@ type weatherType = {
   temp?: number;
   state: string;
 };
+type positionType = {
+  coords: {
+    latitude: number;
+    longitude: number;
+  };
+};
 export const Weather = () => {
   const [weatherNow, setWeatherNow] = useState<weatherType>();
-  const onSuccess = async (position: any) => {
+  const onSuccess = async (position: positionType) => {
+    console.log(position);
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     const response = await weatherApi({ lat: lat, lng: lng });
