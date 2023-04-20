@@ -18,7 +18,6 @@ type positionType = {
 export const Weather = () => {
   const [weatherNow, setWeatherNow] = useState<weatherType>();
   const onSuccess = async (position: positionType) => {
-    console.log(position);
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     const response = await weatherApi({ lat: lat, lng: lng });
@@ -43,9 +42,9 @@ export const Weather = () => {
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
   }, []);
   return (
-    <>
+    <div className="weather">
       <div>{weatherNow?.usable ? `${weatherNow?.temp}°C` : ""}</div>
       <div>{weatherNow?.state}</div>
-    </>
+    </div>
   );
 };
