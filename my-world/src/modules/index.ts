@@ -2,8 +2,9 @@ import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage/session";
 import { persistReducer } from "redux-persist";
 import { TodoReducer } from "./TodoReducer";
+import { ModalReducer } from "./ModalReducer";
 
-export const rootReducer = combineReducers({ TodoReducer });
+export const rootReducer = combineReducers({ TodoReducer, ModalReducer });
 
 const persistConfig = {
   key: "root",
