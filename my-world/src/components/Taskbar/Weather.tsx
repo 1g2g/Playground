@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { weatherApi } from "api/weatherApi";
+import "components/Taskbar/taskbar.scss";
+import {
+  LINK_TO_OPEN_WEATHER,
+  CALL_WEATHER_ICON1,
+  CALL_WEATHER_ICON2,
+} from "assets/UrlStorage";
 export type locType = {
   lat: number;
   lng: number;
@@ -7,6 +14,7 @@ export type locType = {
 type weatherType = {
   usable: boolean;
   temp?: number;
+  icon?: string;
   state: string;
 };
 type positionType = {
@@ -26,6 +34,7 @@ export const Weather = () => {
         usable: true,
         state: response.response.weather[0].main,
         temp: response.response.main.temp,
+        icon: response.response.weather[0].icon,
       });
     } else {
       setWeatherNow({
@@ -42,9 +51,24 @@ export const Weather = () => {
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
   }, []);
   return (
-    <div className="weather">
-      <div>{weatherNow?.usable ? `${weatherNow?.temp}°C` : ""}</div>
-      <div>{weatherNow?.state}</div>
-    </div>
+    <Link
+      to={LINK_TO_OPEN_WEATHER}
+      target="_blank"
+      className="weather hoverElem"
+    >
+      {weatherNow?.usable ? (
+        <img
+          src={CALL_WEATHER_ICON1 + weatherNow?.icon + CALL_WEATHER_ICON2}
+          alt={weatherNow?.state + "icon"}
+        />
+      ) : (
+        ""
+      )}
+      <div>
+        {weatherNow?.usable ? <div> {weatherNow?.temp}°C </div> : ""}
+
+        <div>{weatherNow?.state}</div>
+      </div>
+    </Link>
   );
 };
