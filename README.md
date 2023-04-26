@@ -1,7 +1,7 @@
 # Playground
 ### 프로젝트 목차
-1. QUIZ
-2. 마이월드
+1. [QUIZ](#quiz)
+2. [마이월드](#마이월드-개발-기획서)
 ### 의존성 설치
 전체 설치
 ```
@@ -43,12 +43,13 @@ netlify를 통해 배포하였습니다.
 
 https://dashing-treacle-6f3a12.netlify.app/
 
+
 ## 마이월드 개발 기획서
 ### 배경
 실생활에서 유용하게 자주 사용할 만한 페이지를 만들어 보고 싶었습니다.
 
-### 목적
-typescript와 redux를 능숙하게 다루는 수준에 도달하고자 여러 기능을 복합적으로 만들어 볼 예정입니다.
+### 목표
+typescript, redux 숙련 및 개발 역량 강화
 
 ### 기능
 바로가기, 파일 업로드, 배경화면 변경, Todo, 메모지, 시계, 날짜 등
@@ -62,7 +63,6 @@ typescript와 redux를 능숙하게 다루는 수준에 도달하고자 여러 �
 
 상태관리 : Redux, Redux-persist, redux-saga/redux-thunk(비동기 미들웨어)
 
-통신 : fetch/axios
 
 배포 : Git-pages action, AWS amplify
 
