@@ -47,14 +47,19 @@ a {
         right: 10px;
         left: 10px;
         color: black;
+        height: 100%;
       }
-      input {
-        border: 1px solid #f1f1f1;
+      form {
         border-radius: 50px;
-        outline: none;
         width: 160px;
         height: 100%;
         padding: 0px 30px;
+        background-color: white;
+      }
+      input {
+        outline: none;
+        border: none;
+        height: 28px;
       }
     }
     .shortcuts {
