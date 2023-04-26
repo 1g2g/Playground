@@ -1,5 +1,7 @@
 # Playground
-
+### 프로젝트 목차
+1. QUIZ
+2. 마이월드
 ### 의존성 설치
 전체 설치
 ```
@@ -40,3 +42,33 @@ $ npm start
 netlify를 통해 배포하였습니다.
 
 https://dashing-treacle-6f3a12.netlify.app/
+
+## 마이월드 개발 기획서
+### 배경
+실생활에서 유용하게 자주 사용할 만한 페이지를 만들어 보고 싶었습니다.
+
+### 목적
+typescript와 redux를 능숙하게 다루는 수준에 도달하고자 여러 기능을 복합적으로 만들어 볼 예정입니다.
+
+### 기능
+바로가기, 파일 업로드, 배경화면 변경, Todo, 메모지, 시계, 날짜 등
+
+### 기술 스택
+언어 : Typescript
+
+라이브러리 : React
+
+스타일링 : SCSS
+
+상태관리 : Redux, Redux-persist, redux-saga/redux-thunk(비동기 미들웨어)
+
+통신 : fetch/axios
+
+배포 : Git-pages action, AWS amplify
+
+개발환경 : Window11, VScode, node ver.18.15.0
+
+### 디자인
+모두에게 익숙한 윈도우 os 디자인으로 구현할 예정입니다.
+
+<img src="https://velog.velcdn.com/images/1g2g/post/b9cec51f-991a-45d0-beee-3a26dc697c9e/image.png"/>
