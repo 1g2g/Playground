@@ -1,29 +1,40 @@
 @import "node_modules/bootstrap-icons/font/bootstrap-icons";
-$b-width: 15px;
-$s-width: 10px;
+$hover-padding: 7px;
+a {
+  color: white;
+  text-decoration: none;
+}
 .task-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgb(36, 36, 36);
   color: white;
-  padding: 5px $b-width;
+  padding: 5px 15px;
   .weather {
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    justify-content: center;
+    padding-right: 10px;
   }
   .window-button {
     display: flex;
     justify-content: center;
+    align-items: center;
+
     img {
       width: 30px;
-      height: auto;
+      height: 30px;
       cursor: pointer;
     }
     button {
       background: none;
       border: none;
       outline: none;
-      margin-right: $s-width;
+      margin-right: 10px;
+      padding: $hover-padding;
     }
     .find-app {
       position: relative;
@@ -36,19 +47,29 @@ $s-width: 10px;
         right: 10px;
         left: 10px;
         color: black;
+        height: 100%;
       }
-      input {
-        border: 1px solid #f1f1f1;
+      form {
         border-radius: 50px;
-        outline: none;
         width: 160px;
         height: 100%;
         padding: 0px 30px;
+        background-color: white;
+      }
+      input {
+        outline: none;
+        border: none;
+        height: 28px;
       }
     }
     .shortcuts {
+      margin-left: 10px;
       a {
-        padding-left: $b-width;
+        display: inline-block;
+        margin: 0 auto;
+        padding: $hover-padding;
+        width: 30px;
+        height: 30px;
       }
     }
   }
@@ -57,13 +78,28 @@ $s-width: 10px;
     align-items: center;
     .computer-state {
       font-size: 18px;
-      i {
-        padding-right: $s-width;
-      }
+      padding: $hover-padding;
+      display: flex;
+      width: 70px;
+      justify-content: space-between;
     }
     .time {
       font-size: 14px;
-      text-align: end;
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0 $hover-padding;
     }
+  }
+
+  .hoverElem {
+    border-radius: 10px;
+    // background-color: rgb(56, 56, 56);
+  }
+  .hoverElem:hover {
+    background-color: rgb(56, 56, 56);
+    cursor: pointer;
   }
 }

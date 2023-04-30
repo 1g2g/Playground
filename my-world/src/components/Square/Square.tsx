@@ -5,12 +5,11 @@ import { RootState } from "modules";
 import { closeModal } from "modules/ModalReducer";
 import { useRef } from "react";
 import { useModal } from "hooks/useModal";
-
 export const Square = () => {
   const modalState = useSelector((state: RootState) => state.ModalReducer);
   const dispatch = useDispatch();
 
-  const outside = useRef<HTMLDivElement>(null);
+  const outside = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   useModal(outside, () => dispatch(closeModal()));
   return (
