@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "modules";
-import { openModal, closeModal } from "modules/ModalReducer";
+import { openModal } from "modules/ModalReducer";
 import { WINDOW_ICON, GOOGLING_URL } from "assets/UrlStorage";
 import "components/Taskbar/taskbar.scss";
 
@@ -19,9 +19,8 @@ export const AppShortcuts = () => {
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const toggleStartupMenu = () => {
-    if (modalState.show) dispatch(closeModal());
-    else dispatch(openModal());
+  const showStartupMenu = () => {
+    if (!modalState.show) dispatch(openModal("StartupModal"));
   };
   const handleInput = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +33,7 @@ export const AppShortcuts = () => {
   return (
     <>
       <div className="window-button">
-        <button onClick={toggleStartupMenu} className="hoverElem">
+        <button onClick={showStartupMenu} className="hoverElem">
           <img src={WINDOW_ICON} alt="window button" />
         </button>
         <div className="find-app">

@@ -4,17 +4,29 @@ import { useSelector } from "react-redux";
 import { RootState } from "modules";
 import { closeModal } from "modules/ModalReducer";
 import { useRef } from "react";
-import { useModal } from "hooks/useModal";
+import { useModal } from "hooks/useModalClose";
+
+const ModalComponents = [
+  {
+    type: "StartupModal",
+    component: <StartupModal />,
+  },
+];
 export const Square = () => {
-  const modalState = useSelector((state: RootState) => state.ModalReducer);
+  const { modalName, show } = useSelector(
+    (state: RootState) => state.ModalReducer
+  );
   const dispatch = useDispatch();
+  const findModal = ModalComponents.find((modal) => {
+    return modal.type === modalName;
+  });
 
   const outside = useRef() as React.MutableRefObject<HTMLDivElement>;
+  useModal(outside, () => dispatch(closeModal("")));
 
-  useModal(outside, () => dispatch(closeModal()));
   return (
     <section>
-      {modalState.show ? (
+      {show ? (
         <>
           <div
             ref={outside}
@@ -24,7 +36,7 @@ export const Square = () => {
               height: "100%",
             }}
           >
-            <StartupModal />
+            {findModal?.component}
           </div>
         </>
       ) : (
