@@ -1,17 +1,10 @@
-import { StartupModal } from "components/Taskbar/StartupModal";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { closeModal } from "modules/ModalReducer";
-import { useRef } from "react";
 import { useModal } from "hooks/useModalClose";
+import { ModalComponents } from "assets/Modals";
 
-const ModalComponents = [
-  {
-    type: "StartupModal",
-    component: <StartupModal />,
-  },
-];
 export const Square = () => {
   const { modalName, show } = useSelector(
     (state: RootState) => state.ModalReducer
