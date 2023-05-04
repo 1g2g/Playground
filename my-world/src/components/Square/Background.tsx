@@ -29,16 +29,15 @@ export const Background = () => {
       <div className="applications" ref={outside} onClick={onClickOutside}>
         {ModalComponents.map((modal) => {
           return (
-            <div key={modal.type}>
-              <img
-                id={modal.type}
-                key={modal.type}
-                onClick={onClickApp}
-                className={clickedImg === modal.type ? "colorChange" : ""}
-                onDoubleClick={handleDoubleClick}
-                src={modal.img}
-                alt={modal.desc}
-              />
+            <div
+              key={modal.type}
+              id={modal.type}
+              onClick={onClickApp}
+              className={clickedImg === modal.type ? "colorChange" : ""}
+              onDoubleClick={handleDoubleClick}
+            >
+              <img src={modal.img} alt={modal.desc} />
+              <span>{modal.name}</span>
             </div>
           );
         })}

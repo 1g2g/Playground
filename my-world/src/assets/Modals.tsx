@@ -1,6 +1,6 @@
 import { StartupModal } from "components/Taskbar/StartupModal";
-import NOTE_ICON from "assets/paper.png";
-import WINDOW_ICON from "assets/plane.png";
+import NOTE_ICON from "assets/img/paper.png";
+import WINDOW_ICON from "assets/img/plane.png";
 
 const BasicModal = () => {
   return (
@@ -21,14 +21,16 @@ const BasicModal = () => {
 export const ModalComponents = [
   {
     type: "StartupModal",
+    name: "window",
     img: WINDOW_ICON,
     desc: "startup modal in taskbar",
     component: <StartupModal />,
   },
   {
-    type: "BasicModal",
+    type: "NoteModal",
+    name: "note",
     img: NOTE_ICON,
-    desc: "basic modal for example",
+    desc: "note modal",
     component: <BasicModal />,
   },
 ];
