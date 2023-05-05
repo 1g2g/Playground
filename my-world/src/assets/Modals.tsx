@@ -1,23 +1,11 @@
-import { StartupModal } from "components/Taskbar/StartupModal";
+import { StartupModal } from "components/Modals/StartupModal";
 import NOTE_ICON from "assets/img/paper.png";
 import WINDOW_ICON from "assets/img/plane.png";
+import { Note } from "components/Modals/NoteApp";
+import { TodoApp } from "components/Note/TodoApp";
+import { Notepad } from "components/Note/Notepad";
+import { Code } from "components/Note/Code";
 
-const BasicModal = () => {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        top: "50vh",
-        border: "1px solid",
-        padding: "10px",
-        backgroundColor: "white",
-        zIndex: "100",
-      }}
-    >
-      This is basic modal
-    </div>
-  );
-};
 export const ModalComponents = [
   {
     type: "StartupModal",
@@ -31,6 +19,21 @@ export const ModalComponents = [
     name: "note",
     img: NOTE_ICON,
     desc: "note modal",
-    component: <BasicModal />,
+    component: <Note />,
+  },
+];
+
+export const NoteComponents = [
+  {
+    name: "Notepad",
+    component: <Notepad />,
+  },
+  {
+    name: "Todo",
+    component: <TodoApp />,
+  },
+  {
+    name: "Code",
+    component: <Code />,
   },
 ];

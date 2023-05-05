@@ -2,6 +2,7 @@
 
 # 업로드 임시 정지
 *.png
+src/components/Memo/
 
 # dependencies
 /node_modules
