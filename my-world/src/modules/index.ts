@@ -4,10 +4,12 @@ import { persistReducer } from "redux-persist";
 import { TodoReducer } from "modules/TodoReducer";
 import { ModalReducer } from "modules/ModalReducer";
 import { NoteReducer } from "modules/NoteReducer";
+import { CodeReducer } from "modules/CodeReducer";
 export const rootReducer = combineReducers({
   TodoReducer,
   ModalReducer,
   NoteReducer,
+  CodeReducer,
 });
 
 const persistConfig = {
