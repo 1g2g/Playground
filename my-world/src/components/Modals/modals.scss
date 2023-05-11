@@ -1,16 +1,17 @@
 .modal-layout {
-  position: absolute;
-  top: 50vh;
   border: 1px solid rgb(184, 182, 182);
   box-shadow: 5px 5px 15px rgb(175, 174, 174);
   border-radius: 5px;
   padding: 10px;
   background-color: white;
   z-index: 100;
-}
-.modal-top {
-  img {
-    width: 20px;
-    height: 20px;
+  width: 300px;
+  height: 400px;
+  .modal-top {
+    cursor: move;
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
