@@ -11,7 +11,6 @@ import { PersistGate } from "redux-persist/integration/react";
 //redux & redux persist
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
-
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <PersistGate loading={null} persistor={persistor}>

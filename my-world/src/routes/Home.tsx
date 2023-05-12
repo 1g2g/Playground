@@ -1,11 +1,10 @@
-import { Square } from "components/Square/Square";
 import { TaskBar } from "components/Taskbar/TaskBar";
-import { TodoApp } from "components/Todo/TodoApp";
+import { Background } from "components/Square/Background";
+import "routes/layout.scss";
 export const Home = () => {
   return (
-    <main>
-      <Square />
-      <TodoApp />
+    <main className="layout">
+      <Background />
       <TaskBar />
     </main>
   );
