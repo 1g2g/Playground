@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDrag } from "react-use-gesture";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
@@ -10,12 +10,16 @@ export const ModalNow = () => {
   const findModal = ModalComponents.find((modal) => {
     return modal.type === modalName;
   });
-  useEffect(() => {}, []);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const MODAL_INIT_POS = 100;
+  const [position, setPosition] = useState({
+    x: MODAL_INIT_POS,
+    y: MODAL_INIT_POS,
+  });
   const moveModal = useDrag((params) => {
     setPosition({
-      x: params.offset[0],
-      y: params.offset[1],
+      x: params.offset[0] + MODAL_INIT_POS,
+      y: params.offset[1] + MODAL_INIT_POS,
     });
   }, []);
 
@@ -39,7 +43,7 @@ export const ModalNow = () => {
         {findModal?.name}
         <button onClick={handleModal}>X</button>
       </div>
-      <div>{findModal?.component}</div>
+      <div className="modal-content">{findModal?.component}</div>
     </section>
   );
 };

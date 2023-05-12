@@ -1,17 +1,38 @@
+@import "index";
 .modal-layout {
-  border: 1px solid rgb(184, 182, 182);
-  box-shadow: 5px 5px 15px rgb(175, 174, 174);
+  box-shadow: 5px 5px 15px rgb(16 16 16 / 34%);
   border-radius: 5px;
-  padding: 10px;
-  background-color: white;
+  // padding: 10px;
   z-index: 100;
-  width: 300px;
-  height: 400px;
+  width: 600px;
+  height: auto;
   .modal-top {
     cursor: move;
+    background-color: #3c3cc95e;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
     img {
       width: 20px;
       height: 20px;
     }
+    button {
+      @include clearBtn(rgba(236, 56, 56, 0.486));
+      padding: 0 10px;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .modal-content {
+    background-color: white;
+    // padding: 10px;
+    border-radius: 0 0 5px 5px;
+    width: auto;
+    min-height: 400px;
+    max-height: 500px;
+    overflow-y: scroll;
+    @include scrollbar;
   }
 }

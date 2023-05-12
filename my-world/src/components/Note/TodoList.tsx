@@ -1,4 +1,5 @@
 import { Todos } from "modules/TodoReducer";
+import { useState } from "react";
 
 type TodoListProps = {
   todoLists: Todos;
@@ -6,20 +7,37 @@ type TodoListProps = {
 };
 
 export const TodoList = ({ todoLists, del }: TodoListProps) => {
+  let initNum = 1;
+  const [onMouseItem, setOnMouseItem] = useState<number | null>(null);
+
   const deleteTodo = (e: React.MouseEvent) => {
-    const target = e.target as HTMLButtonElement;
-    del(Number(target.value));
+    const target = (e.target as HTMLElement).parentElement as HTMLButtonElement;
+    if (target) {
+      del(Number(target.value));
+    }
   };
+
   return (
-    <ul>
+    <ol className="todo-list">
       {todoLists.map((todo) => (
         <li key={todo.id}>
-          <span>{todo.text}</span>
-          <button onClick={deleteTodo} value={todo.id}>
-            X
+          <span>
+            {initNum++}. {todo.text}
+          </span>
+          <button
+            onClick={deleteTodo}
+            value={todo.id}
+            onMouseEnter={() => setOnMouseItem(todo.id)}
+            onMouseLeave={() => setOnMouseItem(null)}
+          >
+            {onMouseItem === todo.id ? (
+              <i className="bi bi-check2-square"></i>
+            ) : (
+              <i className="bi bi-app"></i>
+            )}
           </button>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 };

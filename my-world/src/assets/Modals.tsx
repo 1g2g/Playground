@@ -18,13 +18,16 @@ export const NoteComponents = [
   {
     name: "Notepad",
     component: <Notepad />,
+    icon: <i className="bi bi-sticky"></i>,
   },
   {
     name: "Todo",
     component: <TodoApp />,
+    icon: <i className="bi bi-card-checklist"></i>,
   },
   {
     name: "Code",
     component: <Code />,
+    icon: <i className="bi bi-code-slash"></i>,
   },
 ];

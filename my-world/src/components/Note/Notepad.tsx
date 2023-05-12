@@ -17,6 +17,7 @@ export const Notepad = () => {
         }}
         maxLength={5000}
         defaultValue={contentsNow.notepad}
+        className="notepad"
       ></textarea>
     </>
   );

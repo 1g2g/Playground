@@ -14,9 +14,9 @@ export const TodoApp = () => {
   };
 
   return (
-    <>
+    <div className="todo">
       <InputTodo add={add} />
       <TodoList todoLists={todoLists} del={del} />
-    </>
+    </div>
   );
 };

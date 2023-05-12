@@ -14,9 +14,11 @@ export const InputTodo = ({ add }: InputTodoProps) => {
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <input ref={inputRef} />
-      <button onClick={saveTodo}>저장</button>
-    </form>
+    <div className="input-todo">
+      <form onSubmit={(e) => e.preventDefault()}>
+        <input ref={inputRef} />
+        <button onClick={saveTodo}>저장</button>
+      </form>
+    </div>
   );
 };

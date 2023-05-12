@@ -40,26 +40,30 @@ export const Code = () => {
     }
   };
   return (
-    <>
+    <div className="code">
       {modifyCode ? (
         <>
-          <SelectLanguage lang={lang} setLang={setLang} />
+          <div>
+            <SelectLanguage lang={lang} setLang={setLang} />
+            <button onClick={clearCode}>초기화</button>
+            <button onClick={saveNote}>저장</button>
+          </div>
           <textarea
             ref={inputRef}
             maxLength={5000}
             defaultValue={contentsNow.code}
           ></textarea>
-          <button onClick={clearCode}>초기화</button>
-          <button onClick={saveNote}>저장</button>
         </>
       ) : (
         <>
+          <div>
+            <button onClick={() => setModifyCode(true)}>수정</button>
+            <button onClick={() => remove()}>삭제</button>
+          </div>
           <Highlight className={lang}>{contentsNow.code}</Highlight>
-          <button onClick={() => setModifyCode(true)}>수정</button>
-          <button onClick={() => remove()}>삭제</button>
         </>
       )}
-    </>
+    </div>
   );
 };
 

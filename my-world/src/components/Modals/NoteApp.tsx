@@ -1,6 +1,7 @@
 import { MouseEvent, useState } from "react";
 import { NoteComponents } from "assets/Modals";
 import "components/Modals/modals.scss";
+import "components/Note/note.scss";
 
 export const Note = () => {
   const [componentNow, setComponentNow] = useState("Notepad");
@@ -19,16 +20,18 @@ export const Note = () => {
   };
   return (
     <div className="note-modal">
-      <div>
+      <div className="note-buttons">
         {NoteComponents.map((v) => {
           return (
             <button onClick={onChangeNote} id={v.name} key={v.name}>
-              {v.name}
+              {v.icon}
             </button>
           );
         })}
       </div>
-      <NoteComponent />
+      <div className="note-components">
+        <NoteComponent />
+      </div>
     </div>
   );
 };
