@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+$main-color: #3c3cc9;
 @mixin scrollbar {
   &::-webkit-scrollbar {
     width: 7px;

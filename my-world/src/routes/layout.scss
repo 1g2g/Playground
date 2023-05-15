@@ -1,3 +1,4 @@
+@import "index";
 .layout {
   display: flex;
   flex-direction: column;
@@ -5,4 +6,57 @@
   height: 100vh;
   background-image: url("https://source.unsplash.com/random/?cat");
   background-size: cover;
+}
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: $main-color;
+  h1,
+  h2 {
+    font-weight: 500;
+    color: white;
+    text-shadow: 1px 1px 5px rgb(87, 86, 86);
+  }
+  img {
+    width: 50px;
+    height: 50px;
+  }
+  .loading {
+    animation: loading 1.5s ease infinite;
+  }
+  form {
+    width: 100%;
+    text-align: center;
+    input {
+      width: 30%;
+      height: 40px;
+    }
+  }
+}
+.fadeout {
+  animation: fadeOut 2s forwards;
+}
+.disappearWelcome {
+  display: none;
+}
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeOut {
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
