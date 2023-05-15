@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "modules";
 import SPINNER from "assets/img/loading.png";
-
+import "components/Welcome/welcome.scss";
 export const Welcome = () => {
+  const { color } = useSelector((state: RootState) => state.SettingReducer);
+
   const [nickname, setNickname] = useState<String | null>(null);
   const [fadeOutEffect, setFadeOutEffect] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
@@ -34,7 +38,11 @@ export const Welcome = () => {
   }, [nickname]);
 
   return (
-    <section className={`welcome ${fadeOutEffect}`} id="welcome">
+    <section
+      className={`welcome ${fadeOutEffect}`}
+      style={{ backgroundColor: `${color}` }}
+      id="welcome"
+    >
       {nickname ? (
         <>
           <h1>Welcome {nickname}</h1>

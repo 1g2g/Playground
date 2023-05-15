@@ -6,6 +6,8 @@ import { ModalComponents } from "assets/Modals";
 import { closeModal } from "modules/ModalReducer";
 
 export const ModalNow = () => {
+  const { color } = useSelector((state: RootState) => state.SettingReducer);
+
   const { modalName } = useSelector((state: RootState) => state.ModalReducer);
   const findModal = ModalComponents.find((modal) => {
     return modal.type === modalName;
@@ -38,7 +40,11 @@ export const ModalNow = () => {
       }}
       className=" modal-layout"
     >
-      <div className="modal-top" {...moveModal()}>
+      <div
+        className="modal-top"
+        {...moveModal()}
+        style={{ backgroundColor: `${color}` }}
+      >
         <img src={findModal?.img} alt={findModal?.desc} />
         {findModal?.name}
         <button onClick={handleModal}>X</button>

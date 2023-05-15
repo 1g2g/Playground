@@ -4,7 +4,7 @@ import { RootState } from "modules";
 import { closeModal } from "modules/ModalReducer";
 import { useModal } from "hooks/useModalClose";
 import { ModalNow } from "components/Modals/ModalLayout";
-import { StartupModal } from "components/Modals/StartupModal";
+import { SettingsModal } from "components/Modals/SettingsModal";
 
 export const Square = () => {
   const { show, modalName } = useSelector(
@@ -27,7 +27,7 @@ export const Square = () => {
               height: "100%",
             }}
           >
-            {modalName === "StartupModal" ? <StartupModal /> : <ModalNow />}
+            {modalName === "StartupModal" ? <SettingsModal /> : <ModalNow />}
           </div>
         </>
       ) : (
