@@ -6,7 +6,7 @@ export const Background = () => {
   return (
     <div className="background">
       <Square />
-      <Icon />
+      <Icon size="100px" clickedTime={2} hover={false} font="black" />
     </div>
   );
 };

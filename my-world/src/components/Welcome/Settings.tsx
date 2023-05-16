@@ -4,6 +4,7 @@ import { RootState } from "modules";
 import { setColor } from "modules/SettingReducer";
 import { NickNameInput } from "./NicknameInput";
 import "components/Welcome/welcome.scss";
+import { Icon } from "components/Square/Icon";
 export const Settings = () => {
   const [possibleToInput, setPossibleToInput] = useState(false);
   const { color, nickname } = useSelector(
@@ -22,17 +23,25 @@ export const Settings = () => {
 
   return (
     <section className="settings">
-      <input type="color" onChange={onChangeColor} defaultValue={color} />
+      <div>
+        <label>테마 컬러 지정</label>
+        <input type="color" onChange={onChangeColor} defaultValue={color} />
+      </div>
       {possibleToInput ? (
         <NickNameInput />
       ) : (
         <>
-          <span>{nickname}</span>
-          <button onClick={changeNickname}>
-            <i className="bi bi-person-square"></i>
-          </button>
+          <div>
+            <span>{nickname}</span>
+            <button onClick={changeNickname}>
+              <i className="bi bi-person-square"></i>
+            </button>
+          </div>
         </>
       )}
+      <article>
+        <Icon size="50px" clickedTime={1} hover={true} font="white" />
+      </article>
     </section>
   );
 };

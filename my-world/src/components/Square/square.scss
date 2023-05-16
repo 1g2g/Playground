@@ -1,3 +1,4 @@
+@import "index.scss";
 .applications {
   display: grid;
   justify-items: start;
@@ -10,6 +11,11 @@
     img {
       width: 100px;
       height: 100px;
+    }
+  }
+  .icon-hover {
+    &:hover {
+      background-color: rgb(49, 49, 49);
     }
   }
 }
