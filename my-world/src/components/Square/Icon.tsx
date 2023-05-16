@@ -1,39 +1,63 @@
 import { useState, MouseEvent, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "modules";
+import { useDispatch } from "react-redux";
 import { openModal } from "modules/ModalReducer";
 import { ModalComponents } from "assets/Modals";
 import "components/Square/square.scss";
 
-export const Icon = () => {
-  const { show } = useSelector((state: RootState) => state.ModalReducer);
+type IconPropsType = {
+  imgSize: string;
+  clickedTime: number;
+  belongToSettings: boolean;
+  fontColor: string;
+};
+
+export const Icon = ({
+  imgSize,
+  clickedTime,
+  belongToSettings,
+  fontColor,
+}: IconPropsType) => {
   const dispatch = useDispatch();
   const outside = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const [clickedImg, setClickedImg] = useState("");
-  const onClickApp = (e: MouseEvent) => {
+  const onFocusIcon = (e: MouseEvent) => {
     setClickedImg(e.currentTarget.id);
   };
   const onClickOutside = (e: MouseEvent) => {
     if (e.target === outside.current) setClickedImg("");
   };
 
-  const handleDoubleClick = (e: MouseEvent) => {
-    if (!show) dispatch(openModal(e.currentTarget.id));
+  const onModalOpen = (e: MouseEvent) => {
+    dispatch(openModal(e.currentTarget.id));
   };
+
   return (
-    <div className="applications" ref={outside} onClick={onClickOutside}>
+    <div
+      className={["applications", belongToSettings && "settings-grid"].join(
+        " "
+      )}
+      ref={outside}
+      onClick={onClickOutside}
+    >
       {ModalComponents.map((modal) => {
         return (
           <div
             key={modal.type}
             id={modal.type}
-            onClick={onClickApp}
-            className={clickedImg === modal.type ? "colorChange" : ""}
-            onDoubleClick={handleDoubleClick}
+            onClick={clickedTime === 1 ? onModalOpen : onFocusIcon}
+            onDoubleClick={clickedTime === 2 ? onModalOpen : undefined}
+            className={[
+              belongToSettings && "icon-hover",
+              clickedImg === modal.type && "colorChange",
+            ].join(" ")}
           >
-            <img src={modal.img} alt={modal.desc} />
-            <span>{modal.name}</span>
+            <img
+              src={modal.img}
+              alt={modal.desc}
+              style={{ width: imgSize, height: imgSize }}
+            />
+            <span style={{ color: fontColor }}>{modal.name}</span>
           </div>
         );
       })}
