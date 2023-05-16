@@ -14,7 +14,7 @@ export const setNickname = (nickname: string) => ({
 });
 
 const initialState = {
-  color: "#3c3cc9",
+  color: "#3434a8ce",
   nickname: null,
 };
 type ColorAction = ReturnType<typeof setColor> | ReturnType<typeof setNickname>;

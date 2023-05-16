@@ -1,14 +1,12 @@
 @import "index";
 .modal-layout {
-  box-shadow: 5px 5px 15px rgb(16 16 16 / 34%);
+  box-shadow: $modal-shadow;
   border-radius: 5px;
-  // padding: 10px;
   z-index: 100;
   width: 600px;
   height: auto;
   .modal-top {
     cursor: move;
-    background-color: #3c3cc95e;
     border-radius: 5px 5px 0 0;
     display: flex;
     justify-content: space-between;
@@ -27,7 +25,6 @@
   }
   .modal-content {
     background-color: white;
-    // padding: 10px;
     border-radius: 0 0 5px 5px;
     width: auto;
     min-height: 400px;

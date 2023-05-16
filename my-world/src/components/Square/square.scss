@@ -15,9 +15,12 @@
   }
   .icon-hover {
     &:hover {
-      background-color: rgb(49, 49, 49);
+      background-color: $sub-color;
     }
   }
+}
+.settings-grid {
+  grid-template-columns: repeat(auto-fill, minmax(15%, auto));
 }
 .colorChange {
   background-color: rgba(4, 110, 248, 0.24);

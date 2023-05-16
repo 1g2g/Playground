@@ -1,4 +1,5 @@
 @import "node_modules/bootstrap-icons/font/bootstrap-icons";
+@import "index.scss";
 $hover-padding: 7px;
 a {
   color: white;
@@ -8,7 +9,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(36, 36, 36);
+  background-color: $main-color;
   color: white;
   padding: 5px 15px;
   .weather {

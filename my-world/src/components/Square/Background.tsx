@@ -6,7 +6,12 @@ export const Background = () => {
   return (
     <div className="background">
       <Square />
-      <Icon size="100px" clickedTime={2} hover={false} font="black" />
+      <Icon
+        imgSize="100px"
+        clickedTime={2}
+        belongToSettings={false}
+        fontColor="black"
+      />
     </div>
   );
 };

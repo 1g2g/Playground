@@ -23,25 +23,37 @@ export const Settings = () => {
 
   return (
     <section className="settings">
-      <div>
-        <label>테마 컬러 지정</label>
-        <input type="color" onChange={onChangeColor} defaultValue={color} />
-      </div>
-      {possibleToInput ? (
-        <NickNameInput />
-      ) : (
-        <>
-          <div>
-            <span>{nickname}</span>
-            <button onClick={changeNickname}>
-              <i className="bi bi-person-square"></i>
-            </button>
-          </div>
-        </>
-      )}
+      <header>
+        <h2>SETTINGS</h2>
+      </header>
       <article>
-        <Icon size="50px" clickedTime={1} hover={true} font="white" />
+        <Icon
+          imgSize="50px"
+          clickedTime={1}
+          belongToSettings={true}
+          fontColor="white"
+        />
       </article>
+      <main>
+        <div>
+          <div className="theme-color">
+            <input type="color" onChange={onChangeColor} defaultValue={color} />
+            <label>색상 변경</label>
+          </div>
+          <div className="nickname">
+            {possibleToInput ? (
+              <NickNameInput />
+            ) : (
+              <>
+                <button onClick={changeNickname}>
+                  <i className="bi bi-person-square"></i>
+                </button>
+                <label>{nickname}</label>
+              </>
+            )}
+          </div>
+        </div>
+      </main>
     </section>
   );
 };

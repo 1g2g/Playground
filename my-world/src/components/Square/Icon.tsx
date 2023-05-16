@@ -4,14 +4,19 @@ import { openModal } from "modules/ModalReducer";
 import { ModalComponents } from "assets/Modals";
 import "components/Square/square.scss";
 
-type IconType = {
-  size: string;
+type IconPropsType = {
+  imgSize: string;
   clickedTime: number;
-  hover: boolean;
-  font: string;
+  belongToSettings: boolean;
+  fontColor: string;
 };
 
-export const Icon = ({ size, clickedTime, hover, font }: IconType) => {
+export const Icon = ({
+  imgSize,
+  clickedTime,
+  belongToSettings,
+  fontColor,
+}: IconPropsType) => {
   const dispatch = useDispatch();
   const outside = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -28,7 +33,13 @@ export const Icon = ({ size, clickedTime, hover, font }: IconType) => {
   };
 
   return (
-    <div className="applications" ref={outside} onClick={onClickOutside}>
+    <div
+      className={["applications", belongToSettings && "settings-grid"].join(
+        " "
+      )}
+      ref={outside}
+      onClick={onClickOutside}
+    >
       {ModalComponents.map((modal) => {
         return (
           <div
@@ -37,16 +48,16 @@ export const Icon = ({ size, clickedTime, hover, font }: IconType) => {
             onClick={clickedTime === 1 ? onModalOpen : onFocusIcon}
             onDoubleClick={clickedTime === 2 ? onModalOpen : undefined}
             className={[
-              hover && "icon-hover",
+              belongToSettings && "icon-hover",
               clickedImg === modal.type && "colorChange",
             ].join(" ")}
           >
             <img
               src={modal.img}
               alt={modal.desc}
-              style={{ width: size, height: size }}
+              style={{ width: imgSize, height: imgSize }}
             />
-            <span style={{ color: font }}>{modal.name}</span>
+            <span style={{ color: fontColor }}>{modal.name}</span>
           </div>
         );
       })}
