@@ -97,10 +97,77 @@ a {
 
   .hoverElem {
     border-radius: 10px;
-    // background-color: rgb(56, 56, 56);
   }
   .hoverElem:hover {
     background-color: rgb(56, 56, 56);
     cursor: pointer;
+  }
+}
+
+@include tablet {
+  .task-bar {
+    width: 40px;
+    flex-direction: column;
+    .window-button {
+      flex-direction: column;
+      button {
+        margin: 0;
+      }
+      .find-app {
+        display: none;
+      }
+      .shortcuts {
+        width: 50px;
+      }
+    }
+    .weather {
+      flex-direction: column;
+      padding: 0;
+
+      & > div > div:first-child {
+        display: none;
+      }
+    }
+    .state-bar {
+      flex-direction: column;
+      .computer-state {
+        flex-direction: column;
+        width: auto;
+      }
+      .time {
+        height: 120px;
+        flex-direction: column;
+        writing-mode: vertical-rl;
+      }
+    }
+  }
+}
+@include mobile {
+  .top-bar {
+    height: 37px;
+    padding: 0;
+  }
+  .task-bar {
+    justify-content: space-evenly;
+    padding-left: 0;
+    padding-right: 0;
+    .find-app {
+      display: none;
+    }
+    .weather > div > div:first-child {
+      display: none;
+    }
+    .state-bar {
+      width: 70vw;
+      .computer-state {
+        display: none;
+      }
+      .time {
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-around;
+        width: 100vw;
+      }
+    }
   }
 }

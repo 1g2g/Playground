@@ -7,3 +7,18 @@
   background-image: url("https://source.unsplash.com/random/?cat");
   background-size: cover;
 }
+@include tablet {
+  .layout {
+    flex-direction: row;
+  }
+}
+@include mobile {
+  .layout {
+    display: inline-block;
+    position: relative;
+    width: 100vw;
+  }
+  .background {
+    margin-top: $mobile-top-bar-height;
+  }
+}

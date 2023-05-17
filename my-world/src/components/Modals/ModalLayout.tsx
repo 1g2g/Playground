@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { ModalComponents } from "assets/Modals";
 import { closeModal } from "modules/ModalReducer";
+import { useMediaQuery } from "react-responsive";
 
 export const ModalNow = () => {
   const { color } = useSelector((state: RootState) => state.SettingReducer);
@@ -13,7 +14,8 @@ export const ModalNow = () => {
     return modal.type === modalName;
   });
 
-  const MODAL_INIT_POS = 100;
+  const isPC = useMediaQuery({ minWidth: 1024 });
+  const MODAL_INIT_POS = isPC ? 100 : 0;
   const [position, setPosition] = useState({
     x: MODAL_INIT_POS,
     y: MODAL_INIT_POS,
