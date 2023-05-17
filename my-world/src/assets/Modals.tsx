@@ -12,13 +12,6 @@ export const ModalComponents = [
     desc: "note modal",
     component: <Note />,
   },
-  {
-    type: "EmptyModal",
-    name: "Empty",
-    img: PAPER_IMG,
-    desc: "Empty modal",
-    component: <></>,
-  },
 ];
 
 export const NoteComponents = [

@@ -29,5 +29,3 @@ export const SPINNER_IMG =
   "https://velog.velcdn.com/images/1g2g/post/19a30469-bfa9-4f19-9113-c634c46db868/image.png";
 export const PAPER_IMG =
   "https://velog.velcdn.com/images/1g2g/post/ae81279b-3678-4245-8bc9-7ed7ca2183f6/image.png";
-export const EMPTY_IMG =
-  "https://episodes.castos.com/633784b2510731-96124419/images/503435-137428.jpg";
