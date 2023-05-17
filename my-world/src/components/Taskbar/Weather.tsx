@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { weatherApi } from "api/weatherApi";
 import "components/Taskbar/taskbar.scss";
-import {
-  LINK_TO_OPEN_WEATHER,
-  CALL_WEATHER_ICON1,
-  CALL_WEATHER_ICON2,
-} from "assets/UrlStorage";
+import { LINK_TO_OPEN_WEATHER, callWeatherIcon } from "assets/UrlStorage";
 export type locType = {
   lat: number;
   lng: number;
@@ -56,9 +52,9 @@ export const Weather = () => {
       target="_blank"
       className="weather hoverElem"
     >
-      {weatherNow?.usable ? (
+      {weatherNow?.icon ? (
         <img
-          src={CALL_WEATHER_ICON1 + weatherNow?.icon + CALL_WEATHER_ICON2}
+          src={callWeatherIcon(weatherNow.icon)}
           alt={weatherNow?.state + "icon"}
         />
       ) : (

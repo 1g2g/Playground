@@ -25,3 +25,7 @@ export const logos: LogoType[] = [
     shortcut: "https://www.netflix.com/kr/",
   },
 ];
+export const SPINNER_IMG =
+  "https://velog.velcdn.com/images/1g2g/post/19a30469-bfa9-4f19-9113-c634c46db868/image.png";
+export const PAPER_IMG =
+  "https://velog.velcdn.com/images/1g2g/post/ae81279b-3678-4245-8bc9-7ed7ca2183f6/image.png";

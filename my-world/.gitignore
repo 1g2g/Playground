@@ -1,9 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# 업로드 임시 정지
-*.png
-src/components/Memo/
-
+ 
 # dependencies
 /node_modules
 /.pnp

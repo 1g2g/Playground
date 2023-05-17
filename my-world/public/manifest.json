@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "My world",
+  "name": "Browser Homepage ",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://velog.velcdn.com/images/1g2g/post/c08b9df6-934e-4f36-b474-3a07b62ab6f1/image.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }

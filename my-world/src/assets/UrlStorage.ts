@@ -3,5 +3,6 @@ export const WINDOW_ICON =
 export const GOOGLING_URL = "https://www.google.co.kr/search?q=";
 
 export const LINK_TO_OPEN_WEATHER = "https://openweathermap.org/";
-export const CALL_WEATHER_ICON1 = "http://openweathermap.org/img/wn/";
-export const CALL_WEATHER_ICON2 = ".png";
+export const callWeatherIcon = (icon: string) => {
+  return `http://openweathermap.org/img/wn/${icon}.png`;
+};

@@ -1,14 +1,14 @@
-import NOTE_ICON from "assets/img/paper.png";
 import { Note } from "components/Modals/NoteApp";
 import { TodoApp } from "components/Note/TodoApp";
 import { Notepad } from "components/Note/Notepad";
 import { Code } from "components/Note/Code";
+import { PAPER_IMG } from "./ShortCut";
 
 export const ModalComponents = [
   {
     type: "NoteModal",
     name: "note",
-    img: NOTE_ICON,
+    img: PAPER_IMG,
     desc: "note modal",
     component: <Note />,
   },

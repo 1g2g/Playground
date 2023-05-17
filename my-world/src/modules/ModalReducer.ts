@@ -21,7 +21,6 @@ const initialState: Modal = {
 type ModalAction = ReturnType<typeof openModal> | ReturnType<typeof closeModal>;
 
 export const ModalReducer = (state = initialState, action: ModalAction) => {
-  console.log(state);
   switch (action.type) {
     case OPEN_MODAL:
       return {
