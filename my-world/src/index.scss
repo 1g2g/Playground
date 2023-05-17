@@ -11,9 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+$mobile: 767px;
+$tablet: 1023px;
+$desktop: 1024px;
+@mixin mobile {
+  @media (max-width: $mobile) and (min-width: 360px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: $mobile) and (max-width: $tablet) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
 $main-color: rgb(36, 36, 36);
 $sub-color: rgb(49, 49, 49);
 $modal-shadow: 5px 5px 15px rgb(16 16 16 / 34%);
+$mobile-top-bar-height: 40px;
+$tablet-state-bar-width: 70px;
+$mobile-state-bar-height: 60px;
 @mixin scrollbar {
   &::-webkit-scrollbar {
     width: 7px;

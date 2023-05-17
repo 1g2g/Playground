@@ -128,3 +128,50 @@ $settings-layout-padding: 20px;
     }
   }
 }
+@include tablet {
+  .settings {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    main {
+      border-radius: 0 0 15px 15px;
+    }
+  }
+}
+
+@include mobile {
+  .welcome {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    form input {
+      width: 50%;
+    }
+  }
+  .settings {
+    top: 47%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    width: 85%;
+    main {
+      border-radius: 0 0 15px 15px;
+      .theme-color,
+      .nickname {
+        width: 45%;
+      }
+    }
+  }
+  .task-bar {
+    bottom: 0;
+    position: absolute;
+    width: 100vw;
+  }
+  .top-bar {
+    height: $mobile-top-bar-height;
+    position: absolute;
+    width: 100vw;
+    top: 0;
+  }
+}
