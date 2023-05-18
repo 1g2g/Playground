@@ -1,9 +1,11 @@
-export type Note = {
+type Code = {
   lang: string;
   code: string;
 };
+
 const ADD_CODE = "add codeblock to store" as const;
 const DELETE_CODE = "delete code block from store" as const;
+
 export const storeCode = (text: string, lang: string) => ({
   type: ADD_CODE,
   payload: {
@@ -11,15 +13,19 @@ export const storeCode = (text: string, lang: string) => ({
     lang,
   },
 });
+
 export const removeCode = () => ({
   type: DELETE_CODE,
 });
-type NoteAction = ReturnType<typeof storeCode> | ReturnType<typeof removeCode>;
-const initialState: Note = {
+
+type CodeAction = ReturnType<typeof storeCode> | ReturnType<typeof removeCode>;
+
+const initialState: Code = {
   code: "",
   lang: "javascript",
 };
-export function CodeReducer(state: Note = initialState, action: NoteAction) {
+
+export function CodeReducer(state: Code = initialState, action: CodeAction) {
   switch (action.type) {
     case ADD_CODE:
       return {

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "modules";
 import { NickNameInput } from "./NicknameInput";
 import "components/Welcome/welcome.scss";
-import { SPINNER_IMG } from "assets/ShortCut";
+import { SPINNER_IMG } from "assets/UrlStorage";
 
 export const Welcome = () => {
   const { color, nickname } = useSelector(

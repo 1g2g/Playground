@@ -1,6 +1,7 @@
 import { useEffect, RefObject } from "react";
 
 type listenerType = (this: Document, ev: MouseEvent) => void;
+
 type useModalType = (
   outsideRef: RefObject<HTMLDivElement>,
   handler: (event: MouseEvent) => void

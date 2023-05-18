@@ -1,4 +1,4 @@
-export type Todo = {
+type Todo = {
   id: number;
   text: string;
 };
@@ -16,6 +16,7 @@ export const addTodo = (text: string) => ({
     text,
   },
 });
+
 export const delTodo = (id: number) => ({
   type: DEL_TODO,
   payload: id,

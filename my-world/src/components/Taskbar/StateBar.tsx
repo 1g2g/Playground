@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "components/Taskbar/taskbar.scss";
-const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/r?pli=1";
+import { CALENDAR_URL } from "assets/UrlStorage";
+
 export const StateBar = () => {
   const [time, setTime] = useState<Date>();
+
   useEffect(() => {
     const id = setInterval(() => {
       setTime(new Date());
     }, 1000);
     return () => clearInterval(id);
   }, []);
+
   return (
     <div className="state-bar">
       <div className="computer-state hoverElem">

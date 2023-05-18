@@ -1,8 +1,7 @@
 import { logos } from "assets/ShortCut";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { openModal } from "modules/ModalReducer";
 import { WINDOW_ICON, GOOGLING_URL } from "assets/UrlStorage";
@@ -14,14 +13,17 @@ export type LogoType = {
   src: string;
   shortcut?: string;
 };
+
 export const AppShortcuts = () => {
   const modalState = useSelector((state: RootState) => state.ModalReducer);
   const dispatch = useDispatch();
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const showStartupMenu = () => {
     if (!modalState.show) dispatch(openModal("StartupModal"));
   };
+
   const handleInput = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputRef.current !== null) {

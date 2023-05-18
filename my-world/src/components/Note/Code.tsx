@@ -13,12 +13,14 @@ export const Code = () => {
   const [lang, setLang] = useState("");
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
   const contentsNow = useSelector((state: RootState) => state.CodeReducer);
   const dispatch = useDispatch();
   const store = (text: string) => {
     dispatch(storeCode(text, lang));
   };
   const remove = () => dispatch(removeCode());
+
   useEffect(() => {
     if (contentsNow.code === "") setModifyCode(true);
     setLang(contentsNow.lang);
@@ -34,7 +36,8 @@ export const Code = () => {
       alert("저장할 내용이 없습니다.");
     }
   };
-  const clearCode = () => {
+
+  const initCodeBlock = () => {
     if (inputRef.current?.value) {
       inputRef.current.value = "";
     }
@@ -45,7 +48,7 @@ export const Code = () => {
         <>
           <div>
             <SelectLanguage lang={lang} setLang={setLang} />
-            <button onClick={clearCode}>초기화</button>
+            <button onClick={initCodeBlock}>초기화</button>
             <button onClick={saveNote}>저장</button>
           </div>
           <textarea

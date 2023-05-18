@@ -7,7 +7,6 @@ type TodoListProps = {
 };
 
 export const TodoList = ({ todoLists, del }: TodoListProps) => {
-  let initNum = 1;
   const [onMouseItem, setOnMouseItem] = useState<number | null>(null);
 
   const deleteTodo = (e: React.MouseEvent) => {
@@ -19,10 +18,10 @@ export const TodoList = ({ todoLists, del }: TodoListProps) => {
 
   return (
     <ol className="todo-list">
-      {todoLists.map((todo) => (
+      {todoLists.map((todo, idx) => (
         <li key={todo.id}>
           <span>
-            {initNum++}. {todo.text}
+            {idx + 1}. {todo.text}
           </span>
           <button
             onClick={deleteTodo}

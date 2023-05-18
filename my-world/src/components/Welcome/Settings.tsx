@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "modules";
 import { setColor } from "modules/SettingReducer";
-import { NickNameInput } from "./NicknameInput";
+import { NickNameInput } from "components/Welcome/NicknameInput";
 import "components/Welcome/welcome.scss";
 import { Icon } from "components/Square/Icon";
 export const Settings = () => {

@@ -18,6 +18,8 @@ export const Icon = ({
   belongToSettings,
   fontColor,
 }: IconPropsType) => {
+  const isPC = useMediaQuery({ minWidth: 1024 });
+
   const dispatch = useDispatch();
   const outside = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -32,8 +34,6 @@ export const Icon = ({
   const onModalOpen = (e: MouseEvent) => {
     dispatch(openModal(e.currentTarget.id));
   };
-
-  const isPC = useMediaQuery({ minWidth: 1024 });
 
   return (
     <div

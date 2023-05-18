@@ -6,6 +6,7 @@ interface Props {
   lang: string;
   setLang: SetLangType;
 }
+
 export const SelectLanguage = (props: Props) => {
   return (
     <select

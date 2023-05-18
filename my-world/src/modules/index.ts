@@ -6,6 +6,7 @@ import { ModalReducer } from "modules/ModalReducer";
 import { NoteReducer } from "modules/NoteReducer";
 import { CodeReducer } from "modules/CodeReducer";
 import { SettingReducer } from "modules/SettingReducer";
+
 export const rootReducer = combineReducers({
   TodoReducer,
   ModalReducer,

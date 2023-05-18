@@ -3,6 +3,7 @@ import { useRef } from "react";
 type InputTodoProps = {
   add: (text: string) => void;
 };
+
 export const InputTodo = ({ add }: InputTodoProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
