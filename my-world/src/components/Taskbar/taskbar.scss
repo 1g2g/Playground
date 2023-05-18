@@ -1,0 +1,173 @@
+@import "node_modules/bootstrap-icons/font/bootstrap-icons";
+@import "index.scss";
+$hover-padding: 7px;
+a {
+  color: white;
+  text-decoration: none;
+}
+.task-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $main-color;
+  color: white;
+  padding: 5px 15px;
+  .weather {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    justify-content: center;
+    padding-right: 10px;
+  }
+  .window-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      margin-right: 10px;
+      padding: $hover-padding;
+    }
+    .find-app {
+      position: relative;
+      width: 220px;
+      height: 30px;
+      .reading-glasses {
+        width: 1px;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        left: 10px;
+        color: black;
+        height: 100%;
+      }
+      form {
+        border-radius: 50px;
+        width: 160px;
+        height: 100%;
+        padding: 0px 30px;
+        background-color: white;
+      }
+      input {
+        outline: none;
+        border: none;
+        height: 28px;
+      }
+    }
+    .shortcuts {
+      margin-left: 10px;
+      a {
+        display: inline-block;
+        margin: 0 auto;
+        padding: $hover-padding;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  .state-bar {
+    display: flex;
+    align-items: center;
+    .computer-state {
+      font-size: 18px;
+      padding: $hover-padding;
+      display: flex;
+      width: 70px;
+      justify-content: space-between;
+    }
+    .time {
+      font-size: 14px;
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0 $hover-padding;
+    }
+  }
+
+  .hoverElem {
+    border-radius: 10px;
+  }
+  .hoverElem:hover {
+    background-color: rgb(56, 56, 56);
+    cursor: pointer;
+  }
+}
+
+@include tablet {
+  .task-bar {
+    width: 40px;
+    flex-direction: column;
+    .window-button {
+      flex-direction: column;
+      button {
+        margin: 0;
+      }
+      .find-app {
+        display: none;
+      }
+      .shortcuts {
+        width: 50px;
+      }
+    }
+    .weather {
+      flex-direction: column;
+      padding: 0;
+
+      & > div > div:first-child {
+        display: none;
+      }
+    }
+    .state-bar {
+      flex-direction: column;
+      .computer-state {
+        flex-direction: column;
+        width: auto;
+      }
+      .time {
+        height: 120px;
+        flex-direction: column;
+        writing-mode: vertical-rl;
+      }
+    }
+  }
+}
+@include mobile {
+  .top-bar {
+    height: 37px;
+    padding: 0;
+  }
+  .task-bar {
+    justify-content: space-evenly;
+    padding-left: 0;
+    padding-right: 0;
+    .find-app {
+      display: none;
+    }
+    .weather > div > div:first-child {
+      display: none;
+    }
+    .state-bar {
+      width: 70vw;
+      .computer-state {
+        display: none;
+      }
+      .time {
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-around;
+        width: 100vw;
+      }
+    }
+  }
+}

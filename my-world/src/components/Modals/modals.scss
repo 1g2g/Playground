@@ -1,0 +1,59 @@
+@import "index";
+$modal-top-height: 30px;
+.modal-layout {
+  box-shadow: $modal-shadow;
+  border-radius: 5px;
+  z-index: 100;
+  width: 600px;
+  height: auto;
+  .modal-top {
+    cursor: move;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    button {
+      @include clearBtn(rgba(236, 56, 56, 0.486));
+      padding: 0 10px;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .modal-content {
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    width: auto;
+    min-height: 400px;
+    max-height: 600px;
+    overflow-y: scroll;
+    @include scrollbar;
+  }
+}
+@include tablet {
+  .modal-layout {
+    width: calc(100vw - $tablet-state-bar-width);
+    height: 100vh;
+    .modal-content {
+      width: calc(100vw - $tablet-state-bar-width);
+      height: calc(100vh - $modal-top-height);
+      max-height: none;
+    }
+  }
+}
+
+@include mobile {
+  .modal-layout {
+    width: 100vw;
+    height: calc(100vh - $mobile-state-bar-height - $mobile-top-bar-height);
+    .modal-content {
+      width: 100vw;
+      height: calc(100vh - $modal-top-height);
+      max-height: none;
+    }
+  }
+}
