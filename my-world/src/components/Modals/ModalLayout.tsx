@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDrag } from "react-use-gesture";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
@@ -9,10 +9,14 @@ import { useMediaQuery } from "react-responsive";
 export const ModalNow = () => {
   const { color } = useSelector((state: RootState) => state.SettingReducer);
 
-  const { modalName } = useSelector((state: RootState) => state.ModalReducer);
-  const findModal = ModalComponents.find((modal) => {
-    return modal.type === modalName;
-  });
+  const { name } = useSelector((state: RootState) => state.ModalReducer);
+  const [modal, setModal] = useState<any>();
+  useEffect(() => {
+    const findModal = ModalComponents.find((modal) => {
+      return modal.name === name;
+    });
+    setModal(findModal);
+  }, []);
 
   const isPC = useMediaQuery({ minWidth: 1024 });
   const MODAL_INIT_POS = isPC ? 100 : 0;
@@ -33,25 +37,27 @@ export const ModalNow = () => {
     dispatch(closeModal(""));
   };
   return (
-    <section
-      style={{
-        position: "relative",
-        top: position.y,
-        left: position.x,
-        display: "inline-block",
-      }}
-      className=" modal-layout"
-    >
-      <div
-        className="modal-top"
-        {...moveModal()}
-        style={{ backgroundColor: `${color}` }}
+    modal && (
+      <section
+        style={{
+          position: "relative",
+          top: position.y,
+          left: position.x,
+          display: "inline-block",
+        }}
+        className="modal-layout"
       >
-        <img src={findModal?.img} alt={findModal?.desc} />
-        {findModal?.name}
-        <button onClick={handleModal}>X</button>
-      </div>
-      <div className="modal-content">{findModal?.component}</div>
-    </section>
+        <div
+          className="modal-top"
+          {...moveModal()}
+          style={{ backgroundColor: `${color}` }}
+        >
+          <img src={modal.img} alt={modal.desc} />
+          {modal.name}
+          <button onClick={handleModal}>X</button>
+        </div>
+        <div className="modal-content">{modal.component}</div>
+      </section>
+    )
   );
 };
