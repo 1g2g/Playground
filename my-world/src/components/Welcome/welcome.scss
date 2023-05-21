@@ -59,9 +59,9 @@ $settings-layout-padding: 20px;
   left: calc(50% - 300px);
   background-color: $main-color;
   display: inline-block;
-  width: 500px;
-  min-height: 40vh;
-  max-height: 80vh;
+  width: 600px;
+  min-height: 30vh;
+  max-height: 60vh;
   border-radius: 15px 15px 0 0;
   box-shadow: $modal-shadow;
   header {

@@ -7,7 +7,9 @@ import { ModalNow } from "components/Modals/ModalLayout";
 import { SettingsModal } from "components/Modals/SettingsModal";
 
 export const Square = () => {
-  const modal = useSelector((state: RootState) => state.ModalReducer);
+  const { show, modalName } = useSelector(
+    (state: RootState) => state.ModalReducer
+  );
   const dispatch = useDispatch();
 
   const outside = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -15,7 +17,7 @@ export const Square = () => {
 
   return (
     <section>
-      {modal.show && (
+      {show ? (
         <>
           <div
             ref={outside}
@@ -25,9 +27,11 @@ export const Square = () => {
               height: "100%",
             }}
           >
-            {modal.name === "StartupModal" ? <SettingsModal /> : <ModalNow />}
+            {modalName === "StartupModal" ? <SettingsModal /> : <ModalNow />}
           </div>
         </>
+      ) : (
+        <></>
       )}
     </section>
   );

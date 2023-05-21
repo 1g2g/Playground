@@ -65,12 +65,20 @@ a {
     }
     .shortcuts {
       margin-left: 10px;
+      display: flex;
+      align-items: center;
       a {
         display: inline-block;
         margin: 0 auto;
         padding: $hover-padding;
         width: 30px;
         height: 30px;
+      }
+      button {
+        font-size: 30px;
+        padding: 4px 7px;
+        text-align: center;
+        color: white;
       }
     }
   }
@@ -118,6 +126,8 @@ a {
       }
       .shortcuts {
         width: 50px;
+        flex-direction: column;
+        margin-left: 0px;
       }
     }
     .weather {
