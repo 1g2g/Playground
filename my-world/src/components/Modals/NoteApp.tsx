@@ -23,7 +23,14 @@ export const Note = () => {
       <div className="note-buttons">
         {NoteComponents.map((v) => {
           return (
-            <button onClick={onChangeNote} id={v.name} key={v.name}>
+            <button
+              onClick={onChangeNote}
+              id={v.name}
+              key={v.name}
+              style={{
+                border: v.name === componentNow ? "1px solid" : "none", // 조건문 수정 및 문자열 값으로 설정
+              }}
+            >
               {v.icon}
             </button>
           );
