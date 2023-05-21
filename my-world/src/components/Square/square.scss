@@ -1,9 +1,14 @@
 @import "index.scss";
+.background {
+  height: calc(100vh - $mobile-state-bar-height);
+}
 .applications {
   display: grid;
   justify-items: start;
   justify-content: start;
   align-items: start;
+  height: calc(100vh - $mobile-state-bar-height);
+  overflow-y: hidden;
   & > div {
     display: flex;
     flex-direction: column;
@@ -11,6 +16,7 @@
     img {
       width: 100px;
       height: 100px;
+      padding: 5px;
     }
   }
   .icon-hover {
@@ -24,4 +30,20 @@
 }
 .colorChange {
   background-color: rgba(4, 110, 248, 0.24);
+}
+@include tablet {
+  .background,
+  .applications {
+    height: 100vh;
+  }
+}
+@include mobile {
+  .background,
+  .applications {
+    height: calc(100vh - $mobile-state-bar-height - $mobile-top-bar-height);
+  }
+  .applications > div img {
+    width: 50px;
+    height: 50px;
+  }
 }
