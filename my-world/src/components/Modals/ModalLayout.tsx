@@ -9,11 +9,11 @@ import { useMediaQuery } from "react-responsive";
 export const ModalNow = () => {
   const { color } = useSelector((state: RootState) => state.SettingReducer);
 
-  const { name } = useSelector((state: RootState) => state.ModalReducer);
+  const { modalName } = useSelector((state: RootState) => state.ModalReducer);
   const [modal, setModal] = useState<any>();
   useEffect(() => {
     const findModal = ModalComponents.find((modal) => {
-      return modal.name === name;
+      return modal.name === modalName;
     });
     setModal(findModal);
   }, []);

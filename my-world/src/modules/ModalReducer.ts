@@ -6,14 +6,14 @@ type Modal = {
   modalName: string;
 };
 
-export const openModal = (name: string) => ({
+export const openModal = (modalName: string) => ({
   type: OPEN_MODAL,
-  payload: name,
+  payload: modalName,
 });
 
-export const closeModal = (name: string) => ({
+export const closeModal = (modalName: string) => ({
   type: CLOSE_MODAL,
-  payload: name,
+  payload: modalName,
 });
 
 const initialState: Modal = {
@@ -27,12 +27,12 @@ export const ModalReducer = (state = initialState, action: ModalAction) => {
   switch (action.type) {
     case OPEN_MODAL:
       return {
-        name: action.payload,
+        modalName: action.payload,
         show: true,
       };
     case CLOSE_MODAL:
       return {
-        name: action.payload,
+        modalName: action.payload,
         show: false,
       };
     default:
