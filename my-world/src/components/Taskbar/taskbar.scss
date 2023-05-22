@@ -67,6 +67,11 @@ a {
       margin: 0 10px;
       display: flex;
       align-items: center;
+      overflow-x: scroll;
+      width: 50vw;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       a {
         display: inline-block;
         margin: 0 auto;
@@ -145,8 +150,9 @@ a {
       }
       .shortcuts {
         width: 50px;
+        height: 60vh;
         flex-direction: column;
-        margin-left: 0px;
+        margin: 0px;
       }
     }
     .weather {
@@ -180,8 +186,15 @@ a {
     justify-content: space-evenly;
     padding-left: 0;
     padding-right: 0;
-    .find-app {
-      display: none;
+    .window-button {
+      .find-app {
+        display: none;
+      }
+      .shortcuts {
+        overflow-x: scroll;
+        width: 75vw;
+        height: auto;
+      }
     }
     .weather > div > div:first-child {
       display: none;
