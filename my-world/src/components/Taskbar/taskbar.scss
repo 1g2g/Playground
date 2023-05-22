@@ -64,7 +64,7 @@ a {
       }
     }
     .shortcuts {
-      margin-left: 10px;
+      margin: 0 10px;
       display: flex;
       align-items: center;
       a {
@@ -79,6 +79,25 @@ a {
         padding: 4px 7px;
         text-align: center;
         color: white;
+        margin: 0;
+      }
+      .trashcan-icon {
+        display: inline-block;
+        margin-left: -17px;
+        vertical-align: top;
+        i {
+          background-color: red;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+          text-align: center;
+          border-radius: 50%;
+          font-weight: bold;
+        }
+      }
+      .hide {
+        display: none;
       }
     }
   }

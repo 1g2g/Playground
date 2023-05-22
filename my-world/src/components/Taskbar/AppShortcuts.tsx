@@ -1,13 +1,14 @@
 // import { logos } from "assets/ShortCut";
-import { useId, useRef } from "react";
+import { useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { openModal } from "modules/ModalReducer";
 import { WINDOW_ICON, GOOGLING_URL } from "assets/UrlStorage";
 import "components/Taskbar/taskbar.scss";
+import { delShortcut } from "modules/ShortcutReducer";
 export const AppShortcuts = () => {
-  const modalState = useSelector((state: RootState) => state.ModalReducer);
+  const [hideIcon, setHideIcon] = useState(true);
   const shortcutState = useSelector(
     (state: RootState) => state.ShortcutReducer
   );
@@ -29,6 +30,12 @@ export const AppShortcuts = () => {
   const onClickAddShortcut = () => {
     dispatch(openModal("Add Shortcut"));
   };
+  const toggleDelShortcut = () => {
+    setHideIcon((prev) => !prev);
+  };
+  const deleteShortcut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    dispatch(delShortcut(parseInt(e.currentTarget.id)));
+  };
   return (
     <>
       <div className="window-button">
@@ -42,18 +49,32 @@ export const AppShortcuts = () => {
           </form>
         </div>
         <div className="shortcuts">
+          <button
+            onClick={toggleDelShortcut}
+            className="delete-shortcuts hoverElem"
+          >
+            <i className="bi bi-dash-circle-dotted"></i>
+          </button>
           {shortcutState.map((logo) => (
-            <Link
-              to={logo.url ? logo.url : ""}
-              target="_blank"
-              onClick={(e) => {
-                if (!logo.url) e.preventDefault();
-              }}
-              key={logo.url + logo.id}
-              className="hoverElem"
-            >
-              <img src={logo.src} alt={logo.desc} />
-            </Link>
+            <div key={logo.url + logo.id}>
+              <Link
+                to={logo.url ? logo.url : ""}
+                target="_blank"
+                className="hoverElem"
+                onClick={(e) => {
+                  if (!logo.url) e.preventDefault();
+                }}
+              >
+                <img src={logo.src} alt={logo.desc} />
+              </Link>
+              <div
+                onClick={(e) => deleteShortcut(e)}
+                id={String(logo.id)}
+                className={`trashcan-icon ${hideIcon && "hide"}`}
+              >
+                <i className="bi bi-x"></i>
+              </div>
+            </div>
           ))}
           <button onClick={onClickAddShortcut} className="hoverElem">
             <i className="bi bi-plus-circle-dotted"></i>
