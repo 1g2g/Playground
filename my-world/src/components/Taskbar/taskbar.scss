@@ -68,7 +68,7 @@ a {
       display: flex;
       align-items: center;
       overflow-x: scroll;
-      width: 50vw;
+      max-width: calc(100vw - 700px);
       &::-webkit-scrollbar {
         display: none;
       }
@@ -117,6 +117,7 @@ a {
       justify-content: space-between;
     }
     .time {
+      width: 112px;
       font-size: 14px;
       height: 50px;
       display: flex;
@@ -150,7 +151,7 @@ a {
       }
       .shortcuts {
         width: 50px;
-        height: 60vh;
+        max-height: calc(100vh - 360px);
         flex-direction: column;
         margin: 0px;
       }
@@ -191,8 +192,7 @@ a {
         display: none;
       }
       .shortcuts {
-        overflow-x: scroll;
-        width: 75vw;
+        max-width: calc(100vw - 100px);
         height: auto;
       }
     }
