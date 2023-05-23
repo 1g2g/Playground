@@ -1,4 +1,13 @@
 @import "index.scss";
+
+@mixin settingBtn {
+  background: none;
+  border-radius: 5px;
+  i {
+    color: white;
+    font-size: 30px;
+  }
+}
 .welcome {
   display: flex;
   align-items: center;
@@ -117,13 +126,11 @@ $settings-layout-padding: 20px;
           padding: 5px 16px;
         }
         button {
-          background: none;
-          border-radius: 5px;
-          i {
-            color: white;
-            font-size: 30px;
-          }
+          @include settingBtn;
         }
+      }
+      .clear-btn button {
+        @include settingBtn;
       }
     }
   }

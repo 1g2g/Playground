@@ -1,4 +1,3 @@
-// import { logos } from "assets/ShortCut";
 import { useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +7,8 @@ import { WINDOW_ICON, GOOGLING_URL } from "assets/UrlStorage";
 import "components/Taskbar/taskbar.scss";
 import { delShortcut } from "modules/ShortcutReducer";
 export const AppShortcuts = () => {
-  const [hideIcon, setHideIcon] = useState(true);
+  const [hideDelBtn, setHideDelBtn] = useState(true);
+  const [hideIcons, setHideIcons] = useState(true);
   const shortcutState = useSelector(
     (state: RootState) => state.ShortcutReducer
   );
@@ -31,10 +31,13 @@ export const AppShortcuts = () => {
     dispatch(openModal("Add Shortcut"));
   };
   const toggleDelShortcut = () => {
-    setHideIcon((prev) => !prev);
+    setHideDelBtn((prev) => !prev);
   };
   const deleteShortcut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     dispatch(delShortcut(parseInt(e.currentTarget.id)));
+  };
+  const toggleIcons = () => {
+    setHideIcons((prev) => !prev);
   };
   return (
     <>
@@ -51,7 +54,7 @@ export const AppShortcuts = () => {
         <div className="shortcuts">
           <button
             onClick={toggleDelShortcut}
-            className="delete-shortcuts hoverElem"
+            className={`delete-shortcuts hoverElem  ${hideIcons && "hide"}`}
           >
             <i className="bi bi-dash-circle-dotted"></i>
           </button>
@@ -70,14 +73,20 @@ export const AppShortcuts = () => {
               <div
                 onClick={(e) => deleteShortcut(e)}
                 id={String(logo.id)}
-                className={`trashcan-icon ${hideIcon && "hide"}`}
+                className={`trashcan-icon ${hideDelBtn && "hide"}`}
               >
                 <i className="bi bi-x"></i>
               </div>
             </div>
           ))}
-          <button onClick={onClickAddShortcut} className="hoverElem">
+          <button
+            onClick={onClickAddShortcut}
+            className={`hoverElem  ${hideIcons && "hide"}`}
+          >
             <i className="bi bi-plus-circle-dotted"></i>
+          </button>
+          <button onClick={toggleIcons} className="hoverElem">
+            <i className="bi bi-three-dots-vertical"></i>
           </button>
         </div>
       </div>
