@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDrag } from "react-use-gesture";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { ModalComponents } from "assets/Modals";
 import { closeModal } from "modules/ModalReducer";
 import { useMediaQuery } from "react-responsive";
+import { ModalComponentsType } from "assets/Modals";
 
 export const ModalNow = () => {
   const { color } = useSelector((state: RootState) => state.SettingReducer);
-
   const { modalName } = useSelector((state: RootState) => state.ModalReducer);
-  const findModal = ModalComponents.find((modal) => {
-    return modal.type === modalName;
-  });
+  const [modal, setModal] = useState<ModalComponentsType>();
+
+  useEffect(() => {
+    const findModal = ModalComponents.find((modal) => modal.name === modalName);
+    if (findModal) setModal(findModal);
+  }, [modalName]);
 
   const isPC = useMediaQuery({ minWidth: 1024 });
   const MODAL_INIT_POS = isPC ? 100 : 0;
@@ -25,13 +28,14 @@ export const ModalNow = () => {
       x: params.offset[0] + MODAL_INIT_POS,
       y: params.offset[1] + MODAL_INIT_POS,
     });
-  }, []);
+  });
 
   const dispatch = useDispatch();
   const handleModal = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     dispatch(closeModal(""));
   };
+
   return (
     <section
       style={{
@@ -40,18 +44,18 @@ export const ModalNow = () => {
         left: position.x,
         display: "inline-block",
       }}
-      className=" modal-layout"
+      className="modal-layout"
     >
       <div
         className="modal-top"
         {...moveModal()}
         style={{ backgroundColor: `${color}` }}
       >
-        <img src={findModal?.img} alt={findModal?.desc} />
-        {findModal?.name}
+        <img src={modal?.img} alt={modal?.desc} />
+        {modal?.name}
         <button onClick={handleModal}>X</button>
       </div>
-      <div className="modal-content">{findModal?.component}</div>
+      <div className="modal-content">{modal?.component}</div>
     </section>
   );
 };

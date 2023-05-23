@@ -21,6 +21,13 @@ export const Settings = () => {
     setPossibleToInput(false);
   }, [nickname]);
 
+  const clearAllInfo = () => {
+    const accept = window.confirm("정말로 초기화하시겠습니까?");
+    if (accept) {
+      window.localStorage.clear();
+      window.location.reload();
+    }
+  };
   return (
     <section className="settings">
       <header>
@@ -51,6 +58,12 @@ export const Settings = () => {
                 <label>{nickname}</label>
               </>
             )}
+          </div>
+          <div className="clear-btn">
+            <button onClick={clearAllInfo}>
+              <i className="bi bi-radioactive"></i>
+            </button>
+            <label>초기화</label>
           </div>
         </div>
       </main>

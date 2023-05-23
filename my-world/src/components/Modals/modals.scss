@@ -33,6 +33,37 @@ $modal-top-height: 30px;
     overflow-y: scroll;
     @include scrollbar;
   }
+  .input-shortcut {
+    height: 400px;
+    h2 {
+      text-align: center;
+      margin-top: 80px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      input,
+      button {
+        width: 60%;
+        height: 40px;
+        margin: 10px;
+      }
+      button {
+        outline: none;
+        width: 61%;
+      }
+      button {
+        @include clearBtn($sub-color);
+        border: 1px solid black;
+        border-radius: 3px;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
 }
 @include tablet {
   .modal-layout {

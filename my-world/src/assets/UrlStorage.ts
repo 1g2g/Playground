@@ -10,4 +10,6 @@ export const callWeatherIcon = (icon: string) => {
 export const SPINNER_IMG =
   "https://velog.velcdn.com/images/1g2g/post/19a30469-bfa9-4f19-9113-c634c46db868/image.png";
 export const PAPER_IMG =
-  "https://velog.velcdn.com/images/1g2g/post/ae81279b-3678-4245-8bc9-7ed7ca2183f6/image.png";
+  "https://velog.velcdn.com/images/1g2g/post/1550411a-72c3-46b3-a416-328a320e79cf/image.png";
+export const CLICK_IMG =
+  "https://velog.velcdn.com/images/1g2g/post/7bf77050-7f32-4173-8c86-a24b6717c6ba/image.png";

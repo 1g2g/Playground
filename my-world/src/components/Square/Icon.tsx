@@ -45,37 +45,39 @@ export const Icon = ({
     >
       {isPC
         ? ModalComponents.map((modal) => {
-            return (
-              <div
-                key={modal.type}
-                id={modal.type}
-                onClick={clickedTime === 1 ? onModalOpen : onFocusIcon}
-                onDoubleClick={clickedTime === 2 ? onModalOpen : undefined}
-                className={[
-                  belongToSettings && "icon-hover",
-                  clickedImg === modal.type && "colorChange",
-                ].join(" ")}
-              >
-                <img
-                  src={modal.img}
-                  alt={modal.desc}
-                  style={{ width: imgSize, height: imgSize }}
-                />
-                <span style={{ color: fontColor }}>{modal.name}</span>
-              </div>
-            );
+            if (modal.type === "application")
+              return (
+                <div
+                  key={modal.name}
+                  id={modal.name}
+                  onClick={clickedTime === 1 ? onModalOpen : onFocusIcon}
+                  onDoubleClick={clickedTime === 2 ? onModalOpen : undefined}
+                  className={[
+                    belongToSettings && "icon-hover",
+                    clickedImg === modal.name && "colorChange",
+                  ].join(" ")}
+                >
+                  <img
+                    src={modal.img}
+                    alt={modal.desc}
+                    style={{ width: imgSize, height: imgSize }}
+                  />
+                  <span style={{ color: fontColor }}>{modal.name}</span>
+                </div>
+              );
           })
         : ModalComponents.map((modal) => {
-            return (
-              <div key={modal.type} id={modal.type} onClick={onModalOpen}>
-                <img
-                  src={modal.img}
-                  alt={modal.desc}
-                  style={{ width: imgSize, height: imgSize }}
-                />
-                <span style={{ color: fontColor }}>{modal.name}</span>
-              </div>
-            );
+            if (modal.type === "application")
+              return (
+                <div key={modal.name} id={modal.name} onClick={onModalOpen}>
+                  <img
+                    src={modal.img}
+                    alt={modal.desc}
+                    style={{ width: imgSize, height: imgSize }}
+                  />
+                  <span style={{ color: fontColor }}>{modal.name}</span>
+                </div>
+              );
           })}
     </div>
   );

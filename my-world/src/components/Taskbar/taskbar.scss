@@ -64,13 +64,45 @@ a {
       }
     }
     .shortcuts {
-      margin-left: 10px;
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+      overflow-x: scroll;
+      max-width: calc(100vw - 700px);
+      &::-webkit-scrollbar {
+        display: none;
+      }
       a {
         display: inline-block;
         margin: 0 auto;
         padding: $hover-padding;
         width: 30px;
         height: 30px;
+      }
+      button {
+        font-size: 30px;
+        padding: 4px 7px;
+        text-align: center;
+        color: white;
+        margin: 0;
+      }
+      .trashcan-icon {
+        display: inline-block;
+        margin-left: -17px;
+        vertical-align: top;
+        i {
+          background-color: red;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          line-height: 18px;
+          text-align: center;
+          border-radius: 50%;
+          font-weight: bold;
+        }
+      }
+      .hide {
+        display: none;
       }
     }
   }
@@ -85,6 +117,7 @@ a {
       justify-content: space-between;
     }
     .time {
+      width: 112px;
       font-size: 14px;
       height: 50px;
       display: flex;
@@ -118,6 +151,9 @@ a {
       }
       .shortcuts {
         width: 50px;
+        max-height: calc(100vh - 360px);
+        flex-direction: column;
+        margin: 0px;
       }
     }
     .weather {
@@ -151,8 +187,14 @@ a {
     justify-content: space-evenly;
     padding-left: 0;
     padding-right: 0;
-    .find-app {
-      display: none;
+    .window-button {
+      .find-app {
+        display: none;
+      }
+      .shortcuts {
+        max-width: calc(100vw - 100px);
+        height: auto;
+      }
     }
     .weather > div > div:first-child {
       display: none;
