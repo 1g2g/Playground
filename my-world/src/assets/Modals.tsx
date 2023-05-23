@@ -4,8 +4,14 @@ import { Notepad } from "components/Note/Notepad";
 import { Code } from "components/Note/Code";
 import { PAPER_IMG, CLICK_IMG } from "assets/UrlStorage";
 import { InputShortcut } from "components/Modals/InputShortcut";
-import { SettingsModal } from "components/Modals/SettingsModal";
 
+export type ModalComponentsType = {
+  type: string;
+  name: string;
+  img: string;
+  desc: string;
+  component: JSX.Element;
+};
 export const ModalComponents = [
   {
     type: "application",
@@ -20,12 +26,6 @@ export const ModalComponents = [
     img: CLICK_IMG,
     desc: "modal for input shortcut",
     component: <InputShortcut />,
-  },
-  {
-    type: "setting",
-    name: "note",
-    desc: "settings modal",
-    component: <SettingsModal />,
   },
 ];
 export const NoteComponents = [
