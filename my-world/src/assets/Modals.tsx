@@ -2,8 +2,9 @@ import { Note } from "components/Modals/NoteApp";
 import { TodoApp } from "components/Note/TodoApp";
 import { Notepad } from "components/Note/Notepad";
 import { Code } from "components/Note/Code";
-import { PAPER_IMG, CLICK_IMG } from "assets/UrlStorage";
+import { PAPER_ICON, CLICK_ICON, MIRROR_ICON } from "assets/UrlStorage";
 import { InputShortcut } from "components/Modals/InputShortcut";
+import { Mirror } from "components/Mirror/Mirror";
 
 export type ModalComponentsType = {
   type: string;
@@ -16,16 +17,23 @@ export const ModalComponents = [
   {
     type: "application",
     name: "note",
-    img: PAPER_IMG,
+    img: PAPER_ICON,
     desc: "note modal",
     component: <Note />,
   },
   {
     type: "setting",
     name: "Add Shortcut",
-    img: CLICK_IMG,
+    img: CLICK_ICON,
     desc: "modal for input shortcut",
     component: <InputShortcut />,
+  },
+  {
+    type: "application",
+    name: "mirror",
+    img: MIRROR_ICON,
+    desc: "modal for reflect you",
+    component: <Mirror />,
   },
 ];
 export const NoteComponents = [

@@ -6,6 +6,7 @@ import { ModalComponents } from "assets/Modals";
 import { closeModal } from "modules/ModalReducer";
 import { useMediaQuery } from "react-responsive";
 import { ModalComponentsType } from "assets/Modals";
+import { stopWebCam } from "utils/WebcamUtils";
 
 export const ModalNow = () => {
   const { color } = useSelector((state: RootState) => state.SettingReducer);
@@ -34,6 +35,9 @@ export const ModalNow = () => {
   const handleModal = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     dispatch(closeModal(""));
+    if (modal?.name === "mirror") {
+      stopWebCam();
+    }
   };
 
   return (
