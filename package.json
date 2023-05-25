@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "initialize": "cd quiz && npm i",
-    "quiz": "cd quiz && npm start"
+    "init": "cd quiz && npm i && cd ../my-world && npm i",
+    "quiz": "cd quiz && npm start",
+    "my-world": "cd my-world && npm start"
   },
   "dependencies": {
     "@types/react": "^18.0.29",

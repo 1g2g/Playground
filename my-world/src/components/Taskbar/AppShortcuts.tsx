@@ -1,27 +1,23 @@
-import { logos } from "assets/ShortCut";
-import { useRef } from "react";
+import { useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "modules";
 import { openModal } from "modules/ModalReducer";
 import { WINDOW_ICON, GOOGLING_URL } from "assets/UrlStorage";
 import "components/Taskbar/taskbar.scss";
-
-export type LogoType = {
-  index: number;
-  desc: string;
-  src: string;
-  shortcut?: string;
-};
-
+import { delShortcut } from "modules/ShortcutReducer";
 export const AppShortcuts = () => {
-  const modalState = useSelector((state: RootState) => state.ModalReducer);
+  const [hideDelBtn, setHideDelBtn] = useState(true);
+  const [hideIcons, setHideIcons] = useState(true);
+  const shortcutState = useSelector(
+    (state: RootState) => state.ShortcutReducer
+  );
   const dispatch = useDispatch();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   const showStartupMenu = () => {
-    if (!modalState.show) dispatch(openModal("StartupModal"));
+    dispatch(openModal("StartupModal"));
   };
 
   const handleInput = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,7 +27,18 @@ export const AppShortcuts = () => {
       inputRef.current.value = "";
     }
   };
-
+  const onClickAddShortcut = () => {
+    dispatch(openModal("Add Shortcut"));
+  };
+  const toggleDelShortcut = () => {
+    setHideDelBtn((prev) => !prev);
+  };
+  const deleteShortcut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    dispatch(delShortcut(parseInt(e.currentTarget.id)));
+  };
+  const toggleIcons = () => {
+    setHideIcons((prev) => !prev);
+  };
   return (
     <>
       <div className="window-button">
@@ -45,19 +52,42 @@ export const AppShortcuts = () => {
           </form>
         </div>
         <div className="shortcuts">
-          {logos.map((logo) => (
-            <Link
-              to={logo.shortcut ? logo.shortcut : ""}
-              target="_blank"
-              onClick={(e) => {
-                if (!logo.shortcut) e.preventDefault();
-              }}
-              key={logo.index}
-              className="hoverElem"
-            >
-              <img src={logo.src} alt={logo.desc} />
-            </Link>
+          <button
+            onClick={toggleDelShortcut}
+            className={`delete-shortcuts hoverElem  ${hideIcons && "hide"}`}
+          >
+            <i className="bi bi-dash-circle-dotted"></i>
+          </button>
+          {shortcutState.map((logo) => (
+            <div key={logo.url + logo.id}>
+              <Link
+                to={logo.url ? logo.url : ""}
+                target="_blank"
+                className="hoverElem"
+                onClick={(e) => {
+                  if (!logo.url) e.preventDefault();
+                }}
+              >
+                <img src={logo.src} alt={logo.desc} />
+              </Link>
+              <div
+                onClick={(e) => deleteShortcut(e)}
+                id={String(logo.id)}
+                className={`trashcan-icon ${hideDelBtn && "hide"}`}
+              >
+                <i className="bi bi-x"></i>
+              </div>
+            </div>
           ))}
+          <button
+            onClick={onClickAddShortcut}
+            className={`hoverElem  ${hideIcons && "hide"}`}
+          >
+            <i className="bi bi-plus-circle-dotted"></i>
+          </button>
+          <button onClick={toggleIcons} className="hoverElem">
+            <i className="bi bi-three-dots-vertical"></i>
+          </button>
         </div>
       </div>
     </>

@@ -1,4 +1,13 @@
 @import "index.scss";
+
+@mixin settingBtn {
+  background: none;
+  border-radius: 5px;
+  i {
+    color: white;
+    font-size: 30px;
+  }
+}
 .welcome {
   display: flex;
   align-items: center;
@@ -59,9 +68,9 @@ $settings-layout-padding: 20px;
   left: calc(50% - 300px);
   background-color: $main-color;
   display: inline-block;
-  width: 500px;
-  min-height: 40vh;
-  max-height: 80vh;
+  width: 600px;
+  min-height: 30vh;
+  max-height: 60vh;
   border-radius: 15px 15px 0 0;
   box-shadow: $modal-shadow;
   header {
@@ -117,13 +126,11 @@ $settings-layout-padding: 20px;
           padding: 5px 16px;
         }
         button {
-          background: none;
-          border-radius: 5px;
-          i {
-            color: white;
-            font-size: 30px;
-          }
+          @include settingBtn;
         }
+      }
+      .clear-btn button {
+        @include settingBtn;
       }
     }
   }
