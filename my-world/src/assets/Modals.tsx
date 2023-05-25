@@ -1,10 +1,10 @@
-import { Note } from "components/Modals/NoteApp";
+import { Note } from "components/Note/NoteApp";
 import { TodoApp } from "components/Note/TodoApp";
 import { Notepad } from "components/Note/Notepad";
 import { Code } from "components/Note/Code";
 import { PAPER_ICON, CLICK_ICON, MIRROR_ICON } from "assets/UrlStorage";
 import { InputShortcut } from "components/Modals/InputShortcut";
-import { Mirror } from "components/Mirror/Mirror";
+import { Mirror } from "components/Mirror/MirrorApp";
 
 export type ModalComponentsType = {
   type: string;
