@@ -4,6 +4,7 @@
 }
 .applications {
   display: grid;
+  grid-template-rows: repeat(auto-fill, 140px);
   justify-items: start;
   justify-content: start;
   align-items: start;
@@ -16,10 +17,15 @@
     img {
       padding: 5px;
     }
+    span {
+      font-weight: 600;
+      text-shadow: 1px 1px gray;
+    }
   }
   .icon-hover {
     &:hover {
       background-color: $sub-color;
+      border-radius: 5px;
     }
   }
 }

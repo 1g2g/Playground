@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "modules";
 import { NickNameInput } from "./NicknameInput";
 import "components/Welcome/welcome.scss";
-import { SPINNER_IMG } from "assets/UrlStorage";
+import { SPINNER_ICON } from "assets/UrlStorage";
 
 export const Welcome = () => {
   const { color, nickname } = useSelector(
@@ -38,7 +38,7 @@ export const Welcome = () => {
         <>
           <h1>Welcome {nickname}</h1>
           <div className="loading">
-            <img src={SPINNER_IMG} alt="spinner for loading" />
+            <img src={SPINNER_ICON} alt="spinner for loading" />
           </div>
         </>
       ) : (
